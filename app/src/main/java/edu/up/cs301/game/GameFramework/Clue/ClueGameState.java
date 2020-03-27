@@ -1,5 +1,7 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import android.widget.ProgressBar;
+
 public class ClueGameState
 {
 
@@ -8,5 +10,13 @@ public class ClueGameState
     private TileData[][] board;
     private Card[] suggestedCards;
 
-    
+    public Player getWhoseTurn()
+    {
+
+    }
+
+    public int getMovesLeft()
+    {
+
+    }
 }
