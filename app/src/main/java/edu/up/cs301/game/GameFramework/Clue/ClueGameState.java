@@ -12,6 +12,7 @@ public class ClueGameState extends GameState
     private TileData[][] board;
     private Card[] suggestedCards;
     private int moves;
+    private int whoseMove;
     //maybe have a variable for all cards dealt, and it is accessed using player ID int
     //if any variables are added here, make sure to assign them in the two constuctors
 
@@ -32,10 +33,10 @@ public class ClueGameState extends GameState
     }
 
 
-    //public Player getWhoseTurn()
-    //{
-
-    //}
+    public int getWhoseTurn()
+    {
+        return whoseMove;
+    }
 
     public int getMovesLeft()
     {
