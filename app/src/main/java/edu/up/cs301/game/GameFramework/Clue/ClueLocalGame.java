@@ -76,7 +76,7 @@ public class ClueLocalGame extends LocalGame
         return false;
     }
 
-    public boolean checkAccusation(Card[])
+    public boolean checkAccusation(Card[] cd)
     {
         return false;
     }
