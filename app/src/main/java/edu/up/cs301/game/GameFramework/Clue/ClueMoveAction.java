@@ -7,9 +7,17 @@ import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 
 public class ClueMoveAction extends GameAction
 {
-
-    public ClueMoveAction(GamePlayer pl)
+    private int direction;
+    public ClueMoveAction(GamePlayer pl, int direction)
     {
         super(pl);
     }
+
+    public int getDirection(){
+        return direction;
+    }
 }
+
+
+
+
