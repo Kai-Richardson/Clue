@@ -80,4 +80,9 @@ public class ClueLocalGame extends LocalGame
     {
         return false;
     }
+
+    protected boolean makeMove(GameAction action)
+    {
+        ClueMoveA
+    }
 }
