@@ -1,34 +1,40 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import edu.up.cs301.game.GameFramework.GamePlayer;
+
 public class TileData
 {
-    private Player playerData;
+
+    private boolean playerOnTile;
     private Room roomData;
     private boolean wall;
 
-    public void setRoom(Room room)
+    public TileData(String roomName, boolean w)
     {
-
+        this.playerOnTile = false;
+        this.roomData = new Room(roomName);
+        this.wall = w;
     }
+
 
     public Room getRoom()
     {
-
+        return roomData;
     }
 
-    public void setPlayer(Player pl)
+    public void addPlayer()
     {
-
+        playerOnTile = true;
     }
 
-    public Player getPlayer()
+    public void removePlayer()
     {
-
+        playerOnTile = false;
     }
 
-    public void setWall(boolean isWall)
+    public boolean hasPlayer()
     {
-
+        return playerOnTile;
     }
 
     public boolean isWall()

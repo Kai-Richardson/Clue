@@ -5,20 +5,24 @@ public class Room
 
     private String roomName;
     private Room linkedRoom;
+    private boolean passageway;
+
+    public Room(String rn)
+    {
+        this.roomName = rn;
+        passageway = false;
+    }
 
     public void setPassageway(Room rm)
     {
+        linkedRoom = rm;
+        passageway = true;
 
     }
 
     public boolean hasPassageway()
     {
-
-    }
-
-    public void setName(String name)
-    {
-        roomName = name;
+        return passageway;
     }
 
     public String getName()

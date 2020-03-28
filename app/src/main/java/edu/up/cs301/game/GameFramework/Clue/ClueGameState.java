@@ -5,7 +5,7 @@ import android.widget.ProgressBar;
 public class ClueGameState
 {
 
-    private gameStage;
+    //private gameStage;
     private int[] rollResult;
     private TileData[][] board;
     private Card[] suggestedCards;
