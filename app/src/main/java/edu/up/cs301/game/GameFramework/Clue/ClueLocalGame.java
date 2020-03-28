@@ -2,6 +2,8 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import android.widget.ProgressBar;
 
+import edu.up.cs301.game.GameFramework.GamePlayer;
+
 public class ClueLocalGame
 {
     //private Player whoseTurn;
@@ -13,37 +15,37 @@ public class ClueLocalGame
 
     }
 
-    //private Player disproveTurn()
+    private GamePlayer disproveTurn()
     //{
 
     //}
 
-    public boolean canRoll(Player pl)
+    public boolean canRoll(GamePlayer pl)
     {
 
     }
 
-    public boolean canMove(Player pl)
+    public boolean canMove(GamePlayer pl)
     {
 
     }
 
-    public boolean canAccuse(Player pl)
+    public boolean canAccuse(GamePlayer pl)
     {
 
     }
 
-    public boolean canSuggest(Player pl)
+    public boolean canSuggest(GamePlayer pl)
     {
 
     }
 
-    public boolean canDisprove(Player pl)
+    public boolean canDisprove(GamePlayer pl)
     {
 
     }
 
-    public boolean canPassageway(Player pl)
+    public boolean canPassageway(GamePlayer pl)
     {
 
     }
