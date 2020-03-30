@@ -1,7 +1,5 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
-import edu.up.cs301.game.GameFramework.GamePlayer;
-
 public class TileData
 {
 
