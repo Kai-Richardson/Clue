@@ -34,26 +34,27 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageChar1"
+                    <ToggleButton
+                        android:id="@+id/characterRedButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#F44336" />
 
-                    <ImageView
-                        android:id="@+id/imageChar2"
+                    <ToggleButton
+                        android:id="@+id/characterBlueButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#4CAF50" />
 
-                    <ImageView
-                        android:id="@+id/imageChar3"
+                    <ToggleButton
+                        android:id="@+id/characterGreenButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#03A9F4" />
+
                 </TableRow>
 
                 <TableRow
@@ -61,26 +62,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageChar4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterYellowButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FFEB3B" />
 
-                    <ImageView
-                        android:id="@+id/imageChar5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterOrangeButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FF9800" />
 
-                    <ImageView
-                        android:id="@+id/imageChar6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterPinkButton"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#E91E63" />
                 </TableRow>
 
             </TableLayout>
@@ -100,26 +101,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageWep1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterRedButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#F44336" />
 
-                    <ImageView
-                        android:id="@+id/imageWep2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterBlueButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#4CAF50" />
 
-                    <ImageView
-                        android:id="@+id/imageWep3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterGreenButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#03A9F4" />
                 </TableRow>
 
                 <TableRow
@@ -127,26 +128,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageWep4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterYellowButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FFEB3B" />
 
-                    <ImageView
-                        android:id="@+id/imageWep5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterOrangeButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FF9800" />
 
-                    <ImageView
-                        android:id="@+id/imageWep6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterPinkButton2"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#E91E63" />
                 </TableRow>
 
             </TableLayout>
@@ -166,26 +167,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageRoom1"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterRedButton6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#F44336" />
 
-                    <ImageView
-                        android:id="@+id/imageRoom2"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterBlueButton6"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#4CAF50" />
 
-                    <ImageView
-                        android:id="@+id/imageRoom3"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterGreenButton5"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#03A9F4" />
                 </TableRow>
 
                 <TableRow
@@ -193,26 +194,26 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1">
 
-                    <ImageView
-                        android:id="@+id/imageRoom4"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterYellowButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FFEB3B" />
 
-                    <ImageView
-                        android:id="@+id/imageRoom5"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterOrangeButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#FF9800" />
 
-                    <ImageView
-                        android:id="@+id/imageRoom6"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
+                    <ToggleButton
+                        android:id="@+id/characterPinkButton4"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_weight="1"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:background="#E91E63" />
                 </TableRow>
 
             </TableLayout>
