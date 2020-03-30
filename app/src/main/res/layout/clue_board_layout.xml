@@ -35,29 +35,29 @@
                     android:layout_weight="1">
 
                     <ToggleButton
-                        android:id="@+id/characterRedButton"
+                        android:id="@+id/scarletButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#F44336"
+                        android:background="@drawable/charScarlet"
                         android:textOff=" "
                         android:textOn=" " />
 
                     <ToggleButton
-                        android:id="@+id/characterBlueButton"
+                        android:id="@+id/peacockButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#4CAF50"
+                        android:background="@drawable/charPeacock"
                         android:textOff=" "
                         android:textOn=" " />
 
                     <ToggleButton
-                        android:id="@+id/characterGreenButton"
+                        android:id="@+id/greenButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#03A9F4"
+                        android:background="@drawable/charGreen"
                         android:textOff=" "
                         android:textOn=" " />
 
@@ -69,29 +69,29 @@
                     android:layout_weight="1">
 
                     <ToggleButton
-                        android:id="@+id/characterYellowButton"
+                        android:id="@+id/plumButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#FFEB3B"
+                        android:background="@drawable/charPlum"
                         android:textOff=" "
                         android:textOn=" " />
 
                     <ToggleButton
-                        android:id="@+id/characterOrangeButton"
+                        android:id="@+id/whiteButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#FF9800"
+                        android:background="@drawable/charWhite"
                         android:textOff=" "
                         android:textOn=" " />
 
                     <ToggleButton
-                        android:id="@+id/characterPinkButton"
+                        android:id="@+id/mustardButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="#E91E63"
+                        android:background="@drawable/charMustard"
                         android:textOff=" "
                         android:textOn=" " />
                 </TableRow>
