@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.5"
+            android:contentDescription="@string/board_image"
             app:srcCompat="@drawable/gameBoard" />
 
         <LinearLayout
@@ -40,8 +41,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charScarlet"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/peacockButton"
@@ -49,8 +50,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charPeacock"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/greenButton"
@@ -58,8 +59,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charGreen"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                 </TableRow>
 
@@ -74,8 +75,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charPlum"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/whiteButton"
@@ -83,8 +84,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charWhite"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/mustardButton"
@@ -92,8 +93,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/charMustard"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
                 </TableRow>
 
             </TableLayout>
@@ -119,8 +120,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/knife"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/revolverButon"
@@ -128,8 +129,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/revolver"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/candlestickButton"
@@ -137,8 +138,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/candlestick"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
                 </TableRow>
 
                 <TableRow
@@ -152,8 +153,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/rope"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/leadpipeButton"
@@ -161,8 +162,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/leadpipe"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
 
                     <ToggleButton
                         android:id="@+id/wrenchButton"
@@ -170,8 +171,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/wrench"
-                        android:textOff=" "
-                        android:textOn=" " />
+                        android:textOff="@string/space"
+                        android:textOn="@string/space" />
                 </TableRow>
 
             </TableLayout>
@@ -197,8 +198,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#FF8A65"
-                        android:textOff="Dining"
-                        android:textOn="Dining" />
+                        android:textOff="@string/dining"
+                        android:textOn="@string/dining" />
 
                     <ToggleButton
                         android:id="@+id/hallButton"
@@ -206,8 +207,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#FFB74D"
-                        android:textOff="HALL"
-                        android:textOn="HALL" />
+                        android:textOff="@string/hall"
+                        android:textOn="@string/hall" />
 
                     <ToggleButton
                         android:id="@+id/kitchenButton"
@@ -215,8 +216,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#FFF176"
-                        android:textOff="KITCHEN"
-                        android:textOn="KITCHEN" />
+                        android:textOff="@string/kitchen"
+                        android:textOn="@string/kitchen" />
 
                 </TableRow>
 
@@ -231,8 +232,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#4DD0E1"
-                        android:textOff="BALLROOM"
-                        android:textOn="BALLROOM" />
+                        android:textOff="@string/ballroom"
+                        android:textOn="@string/ballroom" />
 
                     <ToggleButton
                         android:id="@+id/billardButton"
@@ -240,8 +241,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#7986CB"
-                        android:textOff="BILLARD"
-                        android:textOn="BILLARD" />
+                        android:textOff="@string/billard"
+                        android:textOn="@string/billard" />
 
                     <ToggleButton
                         android:id="@+id/conservButton"
@@ -249,8 +250,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#4DB6AC"
-                        android:textOff="GARDEN"
-                        android:textOn="GARDEN" />
+                        android:textOff="@string/garden"
+                        android:textOn="@string/garden" />
                 </TableRow>
 
                 <TableRow
@@ -264,8 +265,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#BA68C8"
-                        android:textOff="LIBRARY"
-                        android:textOn="LIBRARY" />
+                        android:textOff="@string/library"
+                        android:textOn="@string/library" />
 
                     <ToggleButton
                         android:id="@+id/loungeButton"
@@ -273,8 +274,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#F06292"
-                        android:textOff="LOUNGE"
-                        android:textOn="LOUNGE" />
+                        android:textOff="@string/lounge"
+                        android:textOn="@string/lounge" />
 
                     <ToggleButton
                         android:id="@+id/studyButton"
@@ -282,8 +283,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#AED581"
-                        android:textOff="STUDY"
-                        android:textOn="STUDY" />
+                        android:textOff="@string/study"
+                        android:textOn="@string/study" />
 
                 </TableRow>
 
@@ -299,21 +300,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#A5D6A7"
-                android:text="Move" />
+                android:text="@string/move" />
 
             <Button
                 android:id="@+id/suggestButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#FFAB91"
-                android:text="Suggest" />
+                android:text="@string/suggest" />
 
             <Button
                 android:id="@+id/acuseButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:backgroundTint="#EF9A9A"
-                android:text="Accuse" />
+                android:text="@string/accuse" />
         </LinearLayout>
 
     </LinearLayout>

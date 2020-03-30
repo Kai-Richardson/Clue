@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">Clue</string>
     <string name="hello_world">Hello world!</string>
+    <string name="dining">Dining</string>
+    <string name="dining">Dining</string>
+    <string name="billard">BILLARD</string>
+    <string name="lounge">LOUNGE</string>
+    <string name="space">" "</string>
+    <string name="library">LIBRARY</string>
+    <string name="suggest">Suggest</string>
+    <string name="study">STUDY</string>
+    <string name="ballroom">BALLROOM</string>
+    <string name="ballroom">BALLROOM</string>
+    <string name="move">Move</string>
+    <string name="garden">GARDEN</string>
+    <string name="library">LIBRARY</string>
+    <string name="lounge">LOUNGE</string>
+    <string name="kitchen">KITCHEN</string>
+    <string name="study">STUDY</string>
+    <string name="garden">GARDEN</string>
+    <string name="billard">BILLARD</string>
+    <string name="kitchen">KITCHEN</string>
+    <string name="hall">HALL</string>
+    <string name="hall">HALL</string>
+    <string name="accuse">Accuse</string>
+    <string name="board_image">Board Image</string>
 </resources>
