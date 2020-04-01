@@ -49,6 +49,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -67,7 +71,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charScarlet"
+                            android:background="@drawable/char_scarlet"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
 
@@ -76,7 +80,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charPeacock"
+                            android:background="@drawable/char_peacock"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
 
@@ -85,7 +89,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charGreen"
+                            android:background="@drawable/char_reen"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
 
@@ -101,7 +105,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charPlum"
+                            android:background="@drawable/char_plum"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
 
@@ -110,7 +114,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charWhite"
+                            android:background="@drawable/char_white"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
 
@@ -119,7 +123,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
-                            android:background="@drawable/charMustard"
+                            android:background="@drawable/char_mustard"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
                     </TableRow>
@@ -130,6 +134,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -210,6 +218,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="20dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
