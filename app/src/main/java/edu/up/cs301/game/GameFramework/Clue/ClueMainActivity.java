@@ -2,6 +2,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import java.util.ArrayList;
 
+import edu.up.cs301.counter.ClueHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
@@ -21,7 +22,7 @@ public class ClueMainActivity extends GameMainActivity
         ArrayList<GamePlayerType> playerTypes = new ArrayList<GamePlayerType>();
 
         //human player type
-        playerTypes.add(new GamePlayerType() {
+        playerTypes.add(new GamePlayerType("Human Player") {
             @Override
             public GamePlayer createPlayer(String name) {
                 return new ClueHumanPlayer(name);

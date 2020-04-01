@@ -81,22 +81,5 @@ public class ClueLocalGame extends LocalGame
         return false;
     }
 
-    protected boolean makeMove(GameAction action)
-    {
-        ClueMoveAction ma = (ClueMoveAction) action;
 
-        //directions 0 up, 1 down, 2 left, 3 right
-        int dir = ma.getDirection();
-        int playerId = getPlayerIdx(ma.getPlayer());
-
-        //check if there are moves left
-        if(movesLeft <= 0)
-        {
-            //if none, return false
-            return false;
-        }
-
-        //get id of player
-        int whoseMove = gameState.getWhoseTurn();
-    }
 }
