@@ -30,7 +30,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
      * @param name
      * 		the player's name
      */
-    public ClueHumanPlayer(String name) {
+    public ClueHumanPlayer(String name)
+    {
         super(name);
     }
 
@@ -41,7 +42,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
      * 		the top object in the GUI's view heirarchy
      */
     public View getTopView() {
-        //return myActivity.findViewById(R.id.top_gui_layout);
+        return myActivity.findViewById(R.id.top_gui_layout);
     }
 
     /**
