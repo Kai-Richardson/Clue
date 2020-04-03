@@ -1,5 +1,6 @@
-package edu.up.cs301.counter;
+package edu.up.cs301.game.GameFramework.Clue;
 
+import edu.up.cs301.game.GameFramework.Clue.ClueGameState;
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
@@ -15,12 +16,8 @@ import android.view.View.OnClickListener;
 public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener {
 
     /* instance variables */
-
-    // The TextView the displays the current counter value
-    private TextView counterValueTextView;
-
     // the most recent game state, as given to us by the CounterLocalGame
-    private GameState state;
+    private ClueGameState state;
 
     // the android activity that we are running
     private GameMainActivity myActivity;
@@ -42,7 +39,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
      * 		the top object in the GUI's view heirarchy
      */
     public View getTopView() {
-        return myActivity.findViewById(R.id.top_gui_layout);
+        return myActivity.findViewById(R.id.clue_board_layout);
     }
 
     /**
@@ -50,7 +47,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
      */
     protected void updateDisplay() {
         // set the text in the appropriate widget
-        //counterValueTextView.setText("" + state.getCounter());
     }
 
     /**
@@ -78,10 +74,10 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
     @Override
     public void receiveInfo(GameInfo info) {
         // ignore the message if it's not a CounterState message
-        if (!(info instanceof GameState)) return;
+        if (!(info instanceof ClueGameState)) return;
 
         // update our state; then update the display
-        this.state = (GameState) info;
+        this.state = (ClueGameState) info;
         updateDisplay();
     }
 
@@ -96,6 +92,11 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
         // remember the activity
         myActivity = activity;
+
+        //load layout for GUI
+        myActivity.setContentView(R.layout.clue_board_layout);
+
+        //add object listeners for buttons
 
 
         // if we have a game state, "simulate" that we have just received

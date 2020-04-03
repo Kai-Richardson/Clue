@@ -2,7 +2,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import java.util.ArrayList;
 
-import edu.up.cs301.counter.ClueHumanPlayer;
+
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
@@ -25,7 +25,14 @@ public class ClueMainActivity extends GameMainActivity
         playerTypes.add(new GamePlayerType("Human Player") {
             @Override
             public GamePlayer createPlayer(String name) {
-                return new ClueHumanPlayer(name);
+                return new edu.up.cs301.counter.ClueHumanPlayer(name);
+            }
+        });
+
+        playerTypes.add(new GamePlayerType("Bad AI Player") {
+            @Override
+            public GamePlayer createPlayer(String name) {
+                return new ClueBadAI(name);
             }
         });
 
@@ -35,15 +42,14 @@ public class ClueMainActivity extends GameMainActivity
         //add players to config
         //update with different AI as game is developed
         defaultConfig.addPlayer("Human", 0);
+        defaultConfig.addPlayer("Bad AI", 1);
+
+        defaultConfig.setRemoteData("Remote Player", "", 0);
 
         return defaultConfig;
 
     }
 
-    public ClueMainActivity()
-    {
-
-    }
 
     public LocalGame createLocalGame()
     {

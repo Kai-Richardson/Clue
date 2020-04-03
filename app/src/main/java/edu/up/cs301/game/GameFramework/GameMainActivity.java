@@ -577,7 +577,6 @@ public abstract class GameMainActivity extends Activity implements
                 // we have an error message
                 MessageBox.popUpMessage(msg, this);
             }
-
         }
 
         //On-screen debugging checkbox
