@@ -25,7 +25,7 @@ public class ClueMainActivity extends GameMainActivity
         playerTypes.add(new GamePlayerType("Human Player") {
             @Override
             public GamePlayer createPlayer(String name) {
-                return new edu.up.cs301.counter.ClueHumanPlayer(name);
+                return new ClueHumanPlayer(name);
             }
         });
 
