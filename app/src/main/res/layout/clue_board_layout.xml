@@ -17,6 +17,7 @@
             android:layout_height="match_parent"
             android:layout_weight="0.5"
             android:contentDescription="@string/board_image"
+            android:src="@drawable/board"
             app:srcCompat="@drawable/board" />
 
         <LinearLayout
