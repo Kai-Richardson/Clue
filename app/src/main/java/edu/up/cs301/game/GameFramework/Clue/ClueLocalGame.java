@@ -13,10 +13,11 @@ public class ClueLocalGame extends LocalGame
 {
     //private Player whoseTurn;
     private int movesLeft;
-    private ArrayList<Card> winningCards;
-    private ArrayList<Card> deck;
+    private ArrayList<Card> winningCards = new ArrayList<Card>();
+    private ArrayList<Card> deck = new ArrayList<Card>();
     private ClueGameState gameState;
     private int handSize;
+    private ArrayList[][] playerHands;
 
 
     public ClueLocalGame()
