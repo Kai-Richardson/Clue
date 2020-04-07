@@ -11,6 +11,7 @@ public class ClueGameState extends GameState
     private int[] rollResult;
     private TileData[][] board;
     private Card[] suggestedCards;
+    private Card[] winningCards = new Card[3];
     private int moves;
     private int whoseMove;
     //maybe have a variable for all cards dealt, and it is accessed using player ID int
@@ -23,6 +24,8 @@ public class ClueGameState extends GameState
     public ClueGameState()
     {
         //empty constructor, this will assign the board and choose cards for players
+
+
     }
 
     public ClueGameState(ClueGameState or) {
