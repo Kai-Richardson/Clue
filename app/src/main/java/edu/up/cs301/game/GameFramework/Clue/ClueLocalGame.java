@@ -2,6 +2,9 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
@@ -10,13 +13,69 @@ public class ClueLocalGame extends LocalGame
 {
     //private Player whoseTurn;
     private int movesLeft;
-    //private Card[] winningCards;
+    private ArrayList<Card> winningCards;
+    private ArrayList<Card> deck;
     private ClueGameState gameState;
+    private int handSize;
 
 
     public ClueLocalGame()
     {
         this.gameState = new ClueGameState();
+
+        //make deck
+        deck.add(new Card("wrench", 3));
+        deck.add(new Card("candlestick", 3));
+        deck.add(new Card("pipe", 3));
+        deck.add(new Card("rope", 3));
+        deck.add(new Card("gun", 3));
+        deck.add(new Card("knife", 3));
+        deck.add(new Card("yard", 0));
+        deck.add(new Card("conservatory", 0));
+        deck.add(new Card("lounge", 0));
+        deck.add(new Card("kitchen", 0));
+        deck.add(new Card("courtyard", 0));
+        deck.add(new Card("pool", 0));
+        deck.add(new Card("ballroom", 0));
+        deck.add(new Card("dining", 0));
+        deck.add(new Card("library", 0));
+        deck.add(new Card("scarlet", 1));
+        deck.add(new Card("plum", 1));
+        deck.add(new Card("mustard", 1));
+        deck.add(new Card("green", 1));
+        deck.add(new Card("white", 1));
+        deck.add(new Card("peacock", 1));
+
+        Collections.shuffle(deck);
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 0)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
+
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 1)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
+
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 2)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
     }
 
     @Override
