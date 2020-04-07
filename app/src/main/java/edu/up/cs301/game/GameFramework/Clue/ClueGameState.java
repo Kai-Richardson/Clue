@@ -22,6 +22,31 @@ public class ClueGameState extends GameState
 
     public ClueGameState()
     {
+        /*
+        //walls with no rooms
+        board[][] = new TileData("wall", true);
+        //board center TileData
+        board[][] = new TileData("wall", true);
+        //study TileData
+        board[][] = new TileData("study", false);
+        //hall TileData
+        board[][] = new TileData("hall", false);
+        //lounge TitleData
+        board[][] = new TileData("lounge", false);
+        //dining room TileData
+        board[][] = new TileData("dining", false);
+        //kitchen TileData
+        board[][] = new TileData("kitchen", false);
+        //ballroom TitleData
+        board[][] = new TileData("ballroom", false);
+        //conservatory TileData
+        board[][] = new TileData("conservatory", false);
+        //billard TileData
+        board[][] = new TileData("billard", false);
+        //library TileData
+        board[][] = new TileData("library", false);
+        */
+
         //empty constructor, this will assign the board and choose cards for players
     }
 
