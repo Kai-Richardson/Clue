@@ -83,9 +83,9 @@ public class ClueLocalGame extends LocalGame
     {
         int correct = 0;
         for(Card card: cd){
-            if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
-                correct++;
-            }
+            //if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
+           //     correct++;
+            //}
             if(correct == 3){
                 return true;
             }
