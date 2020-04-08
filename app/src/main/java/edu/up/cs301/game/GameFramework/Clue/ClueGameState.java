@@ -7,7 +7,7 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 public class ClueGameState extends GameState
 {
 
-    //private gameStage;
+    private int gameStage;
     private int[] rollResult;
     private TileData[][] board;
     private Card[] suggestedCards;
@@ -640,4 +640,6 @@ public class ClueGameState extends GameState
         this.rollResult = roll;
         moves = rollResult[0] + rollResult[1];
     }
+
+    public int getGameStage() { return gameStage; }
 }
