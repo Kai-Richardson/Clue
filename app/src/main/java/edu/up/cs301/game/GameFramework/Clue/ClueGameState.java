@@ -9,7 +9,7 @@ public class ClueGameState extends GameState
 
     private int gameStage;
     private int[] rollResult;
-    private TileData[][] board;
+    private TileData[][] board = new TileData[24][24];
     private Card[] suggestedCards;
     private Card[] winningCards = new Card[3];
     private int moves;
