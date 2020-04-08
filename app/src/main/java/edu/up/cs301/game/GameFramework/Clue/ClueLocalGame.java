@@ -18,7 +18,7 @@ public class ClueLocalGame extends LocalGame
     private ArrayList<Card> deck = new ArrayList<Card>();
     private ClueGameState gameState;
     private int handSize;
-    private Card[][] playerHands;
+    private Card[][] playerHands = new Card[deck.size()/players.length][players.length];
 
 
     public ClueLocalGame()
@@ -26,12 +26,12 @@ public class ClueLocalGame extends LocalGame
         this.gameState = new ClueGameState();
 
         //make deck
-        deck.add(new Card("wrench", 3));
-        deck.add(new Card("candlestick", 3));
-        deck.add(new Card("pipe", 3));
-        deck.add(new Card("rope", 3));
-        deck.add(new Card("gun", 3));
-        deck.add(new Card("knife", 3));
+        deck.add(new Card("wrench", 2));
+        deck.add(new Card("candlestick", 2));
+        deck.add(new Card("pipe", 2));
+        deck.add(new Card("rope", 2));
+        deck.add(new Card("gun", 2));
+        deck.add(new Card("knife", 2));
         deck.add(new Card("yard", 0));
         deck.add(new Card("conservatory", 0));
         deck.add(new Card("lounge", 0));
@@ -80,8 +80,8 @@ public class ClueLocalGame extends LocalGame
         }
         int numPlayers = players.length;
         handSize = deck.size()/numPlayers;
-        for(int i = 0; i < numPlayers; i++) {
-            for (int j = 0; j < handSize; j++) {
+        for(int i = 0; i < handSize; i++) {
+            for (int j = 0; j < numPlayers; j++) {
                 playerHands[i][j] = deck.get(0);
                 deck.remove(0);
             }
@@ -148,6 +148,15 @@ public class ClueLocalGame extends LocalGame
 
     public boolean checkAccusation(Card[] cd)
     {
+        int correct = 0;
+        for(Card card: cd){
+            if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
+                correct++;
+            }
+        }
+        if(correct == 3){
+            return true;
+        }
         return false;
     }
 
