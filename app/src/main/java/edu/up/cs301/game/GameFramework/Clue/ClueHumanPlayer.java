@@ -6,6 +6,9 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -28,6 +31,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	private Button loadSuggestView;
 	private Button loadAccuseView;
+	private FragmentManager ourFragMan;
 
 	/**
 	 * constructor
@@ -103,20 +107,27 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 			//Action Buttons
 			case R.id.moveButton:
 				attemptStateChange("move");
+				break;
 			case R.id.suggestButton:
 				attemptStateChange("suggest");
+				break;
 			case R.id.acuseButton:
 				attemptStateChange("accuse");
+				break;
 
 			//Move Key Buttons
 			case R.id.buttonUp:
 				attemptStateChange("up");
+				break;
 			case R.id.buttonDown:
 				attemptStateChange("down");
+				break;
 			case R.id.buttonLeft:
 				attemptStateChange("left");
+				break;
 			case R.id.buttonRight:
 				attemptStateChange("right");
+				break;
 		}
 
 
@@ -190,6 +201,15 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	//Should attempt to switch state (move, sugg., accuse) by sending an action according to the type
 	private void attemptStateChange(String type) {
 
+		if (type.equals("suggest")) {
+			accuseFragment accuseFragment = new accuseFragment();
+			loadFragment(accuseFragment, "fragmentOne");
+		}
+		else if (type.equals("accuse")) {
+			suggestFragment suggestFragment = new suggestFragment();
+			loadFragment(suggestFragment, "fragmentTwo");
+		}
+
 	}
 
 
@@ -235,6 +255,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		loadAccuseView = myActivity.findViewById(R.id.acuseButton);
 		loadAccuseView.setOnClickListener(this);
 
+		ourFragMan = myActivity.getFragmentManager();
 
 		//add object listeners for buttons
 
@@ -296,7 +317,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ToggleButton leftArrow = getTopView().findViewById(R.id.buttonLeft);
 		leftArrow.setOnClickListener(this);
 
-		ImageView imageView = (ImageView) getTopView().findViewById(R.id.mainBoardView);
+		ImageView imageView = (ImageView) getTopView().findViewById(R.id.boardView);
 		Bitmap bitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(bitmap);
 		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -343,6 +364,27 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		if (x < 0 || 24 < x) return 328; //Middle to make it clear it was bad
 		return 15+(x*30);
 	};
+
+	/**
+	 * This fragment container will be part of the main view.
+	 */
+	public void loadFragment(Fragment frag, String tag)
+	{
+		FragmentManager fm = ourFragMan;
+		FragmentTransaction ft = fm.beginTransaction();
+
+		Fragment fragment = ourFragMan.findFragmentById(R.id.clue_board_layout);
+		if(fragment == null)
+		{
+			ft.add(R.id.clue_board_layout, frag, tag);
+		} else
+		{
+			ft.replace(R.id.clue_board_layout, frag, tag);
+		}
+		ft.addToBackStack(null);
+
+		ft.commit();
+	}
 
 
 }
