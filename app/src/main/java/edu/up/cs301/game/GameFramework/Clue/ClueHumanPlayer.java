@@ -62,16 +62,17 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         //Character Side Buttons
         float buttonInactive = (float) 0.3;
         float buttonActive = 1;
+
         if (button.getId() == R.id.scarletButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
-        if (button.getId() == R.id.peacockButton) {
+        else if (button.getId() == R.id.peacockButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
-        if (button.getId() == R.id.greenButton) {
+        else if (button.getId() == R.id.greenButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
-        if (button.getId() == R.id.plumButton) {
+        else if (button.getId() == R.id.plumButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
         else if (button.getId() == R.id.whiteButton) {
@@ -127,6 +128,29 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         else if (button.getId() == R.id.studyButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
+        //Action Buttons
+        else if (button.getId() == R.id.moveButton) {
+            attemptStateChange("move");
+        }
+        else if (button.getId() == R.id.suggestButton) {
+            attemptStateChange("suggest");
+        }
+        else if (button.getId() == R.id.acuseButton) {
+            attemptStateChange("acuse");
+        }
+        //Move Key Buttons
+        else if (button.getId() == R.id.buttonUp) {
+            attemptMove("up");
+        }
+        else if (button.getId() == R.id.buttonRight) {
+            attemptMove("right");
+        }
+        else if (button.getId() == R.id.buttonDown) {
+            attemptMove("down");
+        }
+        else if (button.getId() == R.id.buttonLeft) {
+            attemptMove("left");
+        }
 
 
 
@@ -134,6 +158,18 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         GameAction action = null;
         game.sendAction(action); // send action to the game
     }// onClick
+
+    
+    //Should attempt to switch state (move, sugg., accuse) by sending an action according to the type
+    private void attemptStateChange(String type) {
+
+    }
+
+
+    //Should attempt move by sending action according to dir
+    private void attemptMove(String dir) {
+
+    }
 
     /**
      * callback method when we get a message (e.g., from the game)
@@ -215,6 +251,16 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         loungeButton.setOnClickListener(this);
         ToggleButton studyButton = getTopView().findViewById(R.id.studyButton);
         studyButton.setOnClickListener(this);
+
+        //Move Key Listeners
+        ToggleButton upArrow = getTopView().findViewById(R.id.buttonUp);
+        upArrow.setOnClickListener(this);
+        ToggleButton rightArrow = getTopView().findViewById(R.id.buttonRight);
+        rightArrow.setOnClickListener(this);
+        ToggleButton downArrow = getTopView().findViewById(R.id.buttonDown);
+        downArrow.setOnClickListener(this);
+        ToggleButton leftArrow = getTopView().findViewById(R.id.buttonLeft);
+        leftArrow.setOnClickListener(this);
 
 
         // if we have a game state, "simulate" that we have just received
