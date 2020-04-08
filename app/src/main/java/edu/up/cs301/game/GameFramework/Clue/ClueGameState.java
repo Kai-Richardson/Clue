@@ -687,7 +687,7 @@ public class ClueGameState extends GameState
 
         //this will assign the board and choose cards for players
 
-
+        whoseMove = 0;
     }
 
     public ClueGameState(ClueGameState or) {
