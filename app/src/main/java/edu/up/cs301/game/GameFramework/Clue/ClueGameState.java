@@ -1,5 +1,6 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import android.service.quicksettings.Tile;
 import android.widget.ProgressBar;
 
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
@@ -9,7 +10,7 @@ public class ClueGameState extends GameState
 
     private int gameStage;
     private int[] rollResult;
-    private TileData[][] board;
+    private TileData[][] board = new TileData[25][25];
     private Card[] suggestedCards;
     private Card[] winningCards = new Card[3];
     private int moves;
