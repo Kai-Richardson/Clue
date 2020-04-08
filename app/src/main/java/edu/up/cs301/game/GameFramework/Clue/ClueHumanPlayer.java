@@ -201,13 +201,13 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	//Should attempt to switch state (move, sugg., accuse) by sending an action according to the type
 	private void attemptStateChange(String type) {
 
-		if (type.equals("suggest")) {
+		if (type.equals("accuse")) {
 			accuseFragment accuseFragment = new accuseFragment();
-			loadFragment(accuseFragment, "fragmentOne");
+			loadFragment(accuseFragment, "fragmentAccuse");
 		}
-		else if (type.equals("accuse")) {
+		else if (type.equals("suggest")) {
 			suggestFragment suggestFragment = new suggestFragment();
-			loadFragment(suggestFragment, "fragmentTwo");
+			loadFragment(suggestFragment, "fragmentSuggest");
 		}
 
 	}
