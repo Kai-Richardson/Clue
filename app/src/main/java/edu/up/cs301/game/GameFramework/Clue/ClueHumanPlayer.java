@@ -6,9 +6,14 @@ import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ToggleButton;
 
 
@@ -323,6 +328,41 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ToggleButton leftArrow = getTopView().findViewById(R.id.buttonLeft);
 		leftArrow.setOnClickListener(this);
 
+		ImageView imageView = (ImageView) getTopView().findViewById(R.id.mainBoardView);
+		Bitmap bitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
+		Canvas canvas = new Canvas(bitmap);
+		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+		paint.setColor(Color.BLUE);
+		canvas.drawCircle(Grid2Coord(0), Grid2Coord(0), 10, paint);
+		paint.setColor(Color.MAGENTA);
+		canvas.drawCircle(Grid2Coord(1), Grid2Coord(1), 10, paint);
+		canvas.drawCircle(Grid2Coord(2), Grid2Coord(2), 10, paint);
+		canvas.drawCircle(Grid2Coord(3), Grid2Coord(3), 10, paint);
+		canvas.drawCircle(Grid2Coord(4), Grid2Coord(4), 10, paint);
+		canvas.drawCircle(Grid2Coord(5), Grid2Coord(5), 10, paint);
+		canvas.drawCircle(Grid2Coord(6), Grid2Coord(6), 10, paint);
+		canvas.drawCircle(Grid2Coord(7), Grid2Coord(7), 10, paint);
+		canvas.drawCircle(Grid2Coord(8), Grid2Coord(8), 10, paint);
+		canvas.drawCircle(Grid2Coord(9), Grid2Coord(9), 10, paint);
+		canvas.drawCircle(Grid2Coord(10), Grid2Coord(10), 10, paint);
+		canvas.drawCircle(Grid2Coord(11), Grid2Coord(11), 10, paint);
+		canvas.drawCircle(Grid2Coord(12), Grid2Coord(12), 10, paint);
+		canvas.drawCircle(Grid2Coord(13), Grid2Coord(13), 10, paint);
+		canvas.drawCircle(Grid2Coord(14), Grid2Coord(14), 10, paint);
+		canvas.drawCircle(Grid2Coord(15), Grid2Coord(15), 10, paint);
+		canvas.drawCircle(Grid2Coord(16), Grid2Coord(16), 10, paint);
+		canvas.drawCircle(Grid2Coord(17), Grid2Coord(17), 10, paint);
+		canvas.drawCircle(Grid2Coord(18), Grid2Coord(18), 10, paint);
+		canvas.drawCircle(Grid2Coord(19), Grid2Coord(19), 10, paint);
+		canvas.drawCircle(Grid2Coord(20), Grid2Coord(20), 10, paint);
+		canvas.drawCircle(Grid2Coord(23), Grid2Coord(23), 10, paint);
+		canvas.drawCircle(Grid2Coord(0), Grid2Coord(16), 10, paint);
+		canvas.drawCircle(Grid2Coord(16), Grid2Coord(0), 10, paint);
+		paint.setColor(Color.RED);
+		canvas.drawCircle(Grid2Coord(24), Grid2Coord(24), 10, paint);
+
+		imageView.setImageBitmap(bitmap);
+
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
@@ -330,6 +370,12 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 			receiveInfo(state);
 		}
 	}
+
+	//Converts Grid values to raw x,y coordinates to draw on
+	private int Grid2Coord(int x){
+		return 15+(x*30);
+	};
+
 
 }
 

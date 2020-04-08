@@ -15,8 +15,10 @@
             android:id="@+id/dummyView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible"
-            android:layout_weight="0.6" />
+            android:layout_weight="0.7"
+            android:background="@drawable/board"
+            android:scaleType="center"
+            android:visibility="visible" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -150,8 +152,7 @@
             android:id="@+id/mainBoardView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.6"
-            android:src="@drawable/board" />
+            android:layout_weight="0.7" />
 
         <LinearLayout
             android:layout_width="match_parent"
