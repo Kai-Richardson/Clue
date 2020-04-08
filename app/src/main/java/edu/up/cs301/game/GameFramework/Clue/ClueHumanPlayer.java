@@ -84,7 +84,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         else if (button.getId() == R.id.knifeButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
-        else if (button.getId() == R.id.revolverButon) {
+        else if (button.getId() == R.id.revolverButton) {
             button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
         }
         else if (button.getId() == R.id.candlestickButton) {
@@ -168,11 +168,53 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
         //add object listeners for buttons
 
+        //Character Side Buttons
         ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
         scarletButton.setOnClickListener(this);
-
         ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
         peacockButton.setOnClickListener(this);
+        ToggleButton greenButton = getTopView().findViewById(R.id.greenButton);
+        greenButton.setOnClickListener(this);
+        ToggleButton plumButton = getTopView().findViewById(R.id.plumButton);
+        plumButton.setOnClickListener(this);
+        ToggleButton whiteButton = getTopView().findViewById(R.id.whiteButton);
+        whiteButton.setOnClickListener(this);
+        ToggleButton mustardButton = getTopView().findViewById(R.id.mustardButton);
+        mustardButton.setOnClickListener(this);
+
+        //Weapon Side Buttons
+        ToggleButton knifeButton = getTopView().findViewById(R.id.knifeButton);
+        knifeButton.setOnClickListener(this);
+        ToggleButton revolverButton = getTopView().findViewById(R.id.revolverButton);
+        revolverButton.setOnClickListener(this);
+        ToggleButton candlestickButton = getTopView().findViewById(R.id.candlestickButton);
+        candlestickButton.setOnClickListener(this);
+        ToggleButton ropeButton = getTopView().findViewById(R.id.ropeButton);
+        ropeButton.setOnClickListener(this);
+        ToggleButton leadpipeButton = getTopView().findViewById(R.id.leadpipeButton);
+        leadpipeButton.setOnClickListener(this);
+        ToggleButton wrenchButton = getTopView().findViewById(R.id.wrenchButton);
+        wrenchButton.setOnClickListener(this);
+
+        //Room Side buttons
+        ToggleButton diningButton = getTopView().findViewById(R.id.diningButton);
+        diningButton.setOnClickListener(this);
+        ToggleButton hallButton = getTopView().findViewById(R.id.hallButton);
+        hallButton.setOnClickListener(this);
+        ToggleButton kitchenButton = getTopView().findViewById(R.id.kitchenButton);
+        kitchenButton.setOnClickListener(this);
+        ToggleButton ballroomButton = getTopView().findViewById(R.id.ballroomButton);
+        ballroomButton.setOnClickListener(this);
+        ToggleButton gameroomButton = getTopView().findViewById(R.id.gameroomButton);
+        gameroomButton.setOnClickListener(this);
+        ToggleButton gardenButton = getTopView().findViewById(R.id.gardenButton);
+        gardenButton.setOnClickListener(this);
+        ToggleButton libraryButton = getTopView().findViewById(R.id.libraryButton);
+        libraryButton.setOnClickListener(this);
+        ToggleButton loungeButton = getTopView().findViewById(R.id.loungeButton);
+        loungeButton.setOnClickListener(this);
+        ToggleButton studyButton = getTopView().findViewById(R.id.studyButton);
+        studyButton.setOnClickListener(this);
 
 
         // if we have a game state, "simulate" that we have just received
