@@ -10,6 +10,7 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
 import android.graphics.Color;
 import android.graphics.PorterDuff;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -34,22 +35,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
     public ClueHumanPlayer(String name)
     {
         super(name);
-
-        final ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                scarletButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-            }
-        });
-
-        ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
 
     }
 
@@ -118,6 +103,23 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         myActivity.setContentView(R.layout.clue_board_layout);
 
         //add object listeners for buttons
+
+        final ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
+        scarletButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Log.i("Clue", "Pressed Scarlet");
+                scarletButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+            }
+        });
+
+        ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
+        scarletButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
 
 
         // if we have a game state, "simulate" that we have just received
