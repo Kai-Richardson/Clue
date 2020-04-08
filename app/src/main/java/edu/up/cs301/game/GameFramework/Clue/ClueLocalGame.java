@@ -37,7 +37,7 @@ public class ClueLocalGame extends LocalGame
     @Override
     protected boolean canMove(int pl)
     {
-        return false;
+        return pl == gameState.getWhoseTurn();
     }
 
     @Override
@@ -45,6 +45,12 @@ public class ClueLocalGame extends LocalGame
     {
         //this method checks which state of the game we are in, and if a certain move can be made then
         //updated the gameState if the move was valid, and returns false, else returns false
+        if(action instanceof ClueRollAction)
+        {
+            ClueRollAction cra = (ClueRollAction)action;
+
+
+        }
         return false; //filler
     }
 
