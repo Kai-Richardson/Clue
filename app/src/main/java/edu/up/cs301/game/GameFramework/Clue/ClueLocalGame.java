@@ -1,7 +1,5 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
-import android.widget.ProgressBar;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -77,8 +75,8 @@ public class ClueLocalGame extends LocalGame
                 break;
             }
         }
-        playerHands = new Card[deck.size()/players.length][players.length];
-        int numPlayers = players.length;
+        playerHands = new Card[deck.size()/2][2];
+        int numPlayers = 2;
         handSize = deck.size()/numPlayers;
         for(int i = 0; i < handSize; i++) {
             for (int j = 0; j < numPlayers; j++) {
