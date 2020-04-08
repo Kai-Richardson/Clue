@@ -365,7 +365,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		return 15+(x*30);
 	};
 
-	/**
+	/** Loads a 'Fragment' - aka a popup View
+	 *
 	 * This fragment container will be part of the main view.
 	 */
 	public void loadFragment(Fragment frag, String tag)

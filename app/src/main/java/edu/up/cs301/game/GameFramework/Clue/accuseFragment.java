@@ -9,17 +9,17 @@ import android.view.ViewGroup;
 
 import edu.up.cs301.game.R;
 
-public class accuseFragment extends Fragment
+public class accuseFragment extends Fragment implements View.OnClickListener
 {
-	private final String TAG = "com.example.app.FragmentOne";
+	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.AccuseView";
 
-	private Activity mActivity;
+	private Activity myActivity;
 
 	public void onAttach(Activity act)
 	{
 		super.onAttach(act);
 
-		this.mActivity = act;
+		this.myActivity = act;
 	}
 
 	@Override
@@ -29,6 +29,17 @@ public class accuseFragment extends Fragment
 
 		//do whatever you want here - like adding a listview or anything
 
+
 		return view;
+	}
+
+	@Override
+	public void onClick(View view) {
+
+		//Maybe use this to close:
+		// if confirm button
+		// call method on main activity then:
+		// getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+
 	}
 }

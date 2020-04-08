@@ -9,18 +9,18 @@ import android.view.ViewGroup;
 
 import edu.up.cs301.game.R;
 
-public class suggestFragment extends Fragment
+public class suggestFragment extends Fragment implements View.OnClickListener
 {
-	private final String TAG = "com.example.app.FragmentTwo";
+	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.SuggestView";
 
-	private Activity mActivity;
+	private Activity myActivity;
 
 	@Override
 	public void onAttach(Activity act)
 	{
 		super.onAttach(act);
 
-		this.mActivity = act;
+		this.myActivity = act;
 	}
 
 	@Override
@@ -30,6 +30,19 @@ public class suggestFragment extends Fragment
 
 		//do whatever you want here - like set text to display in your fragment
 
+
+
+
 		return view;
+	}
+
+	@Override
+	public void onClick(View view) {
+
+		//Maybe use this to close:
+		// if confirm button
+		// call method on main activity then:
+		// getActivity().getFragmentManager().beginTransaction().remove(this).commit();
+
 	}
 }
