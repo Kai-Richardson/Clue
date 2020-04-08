@@ -1,19 +1,12 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
-import edu.up.cs301.game.GameFramework.Clue.ClueGameState;
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
-import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.ToggleButton;
 
@@ -66,6 +59,77 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         // if we are not yet connected to a game, ignore
         if (game == null) return;
 
+        //Character Side Buttons
+        float buttonInactive = (float) 0.3;
+        float buttonActive = 1;
+        if (button.getId() == R.id.scarletButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.peacockButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.greenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.plumButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.whiteButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.mustardButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        //Weapon Side Buttons
+        else if (button.getId() == R.id.knifeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.revolverButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.candlestickButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.ropeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.leadpipeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.wrenchButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        //Room Side Buttons
+        else if (button.getId() == R.id.diningButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.hallButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.kitchenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.ballroomButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.gameroomButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.gardenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.libraryButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.loungeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.studyButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+
+
+
         // Construct the action and send it to the game
         GameAction action = null;
         game.sendAction(action); // send action to the game
@@ -104,22 +168,53 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
         //add object listeners for buttons
 
-        final ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i("Clue", "Pressed Scarlet");
-                scarletButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-            }
-        });
-
+        //Character Side Buttons
+        ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
+        scarletButton.setOnClickListener(this);
         ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        peacockButton.setOnClickListener(this);
+        ToggleButton greenButton = getTopView().findViewById(R.id.greenButton);
+        greenButton.setOnClickListener(this);
+        ToggleButton plumButton = getTopView().findViewById(R.id.plumButton);
+        plumButton.setOnClickListener(this);
+        ToggleButton whiteButton = getTopView().findViewById(R.id.whiteButton);
+        whiteButton.setOnClickListener(this);
+        ToggleButton mustardButton = getTopView().findViewById(R.id.mustardButton);
+        mustardButton.setOnClickListener(this);
 
-            }
-        });
+        //Weapon Side Buttons
+        ToggleButton knifeButton = getTopView().findViewById(R.id.knifeButton);
+        knifeButton.setOnClickListener(this);
+        ToggleButton revolverButton = getTopView().findViewById(R.id.revolverButton);
+        revolverButton.setOnClickListener(this);
+        ToggleButton candlestickButton = getTopView().findViewById(R.id.candlestickButton);
+        candlestickButton.setOnClickListener(this);
+        ToggleButton ropeButton = getTopView().findViewById(R.id.ropeButton);
+        ropeButton.setOnClickListener(this);
+        ToggleButton leadpipeButton = getTopView().findViewById(R.id.leadpipeButton);
+        leadpipeButton.setOnClickListener(this);
+        ToggleButton wrenchButton = getTopView().findViewById(R.id.wrenchButton);
+        wrenchButton.setOnClickListener(this);
+
+        //Room Side buttons
+        ToggleButton diningButton = getTopView().findViewById(R.id.diningButton);
+        diningButton.setOnClickListener(this);
+        ToggleButton hallButton = getTopView().findViewById(R.id.hallButton);
+        hallButton.setOnClickListener(this);
+        ToggleButton kitchenButton = getTopView().findViewById(R.id.kitchenButton);
+        kitchenButton.setOnClickListener(this);
+        ToggleButton ballroomButton = getTopView().findViewById(R.id.ballroomButton);
+        ballroomButton.setOnClickListener(this);
+        ToggleButton gameroomButton = getTopView().findViewById(R.id.gameroomButton);
+        gameroomButton.setOnClickListener(this);
+        ToggleButton gardenButton = getTopView().findViewById(R.id.gardenButton);
+        gardenButton.setOnClickListener(this);
+        ToggleButton libraryButton = getTopView().findViewById(R.id.libraryButton);
+        libraryButton.setOnClickListener(this);
+        ToggleButton loungeButton = getTopView().findViewById(R.id.loungeButton);
+        loungeButton.setOnClickListener(this);
+        ToggleButton studyButton = getTopView().findViewById(R.id.studyButton);
+        studyButton.setOnClickListener(this);
 
 
         // if we have a game state, "simulate" that we have just received
