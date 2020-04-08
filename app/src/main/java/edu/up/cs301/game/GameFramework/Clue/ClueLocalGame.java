@@ -4,7 +4,6 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
@@ -18,7 +17,7 @@ public class ClueLocalGame extends LocalGame
     private ArrayList<Card> deck = new ArrayList<Card>();
     private ClueGameState gameState;
     private int handSize;
-    private Card[][] playerHands = new Card[deck.size()/players.length][players.length];
+    private Card[][] playerHands;
 
 
     public ClueLocalGame()
@@ -78,6 +77,7 @@ public class ClueLocalGame extends LocalGame
                 break;
             }
         }
+        playerHands = new Card[deck.size()/players.length][players.length];
         int numPlayers = players.length;
         handSize = deck.size()/numPlayers;
         for(int i = 0; i < handSize; i++) {
@@ -153,12 +153,11 @@ public class ClueLocalGame extends LocalGame
             if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
                 correct++;
             }
-        }
-        if(correct == 3){
-            return true;
+            if(correct == 3){
+                return true;
+            }
         }
         return false;
     }
-
 
 }
