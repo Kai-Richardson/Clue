@@ -1,19 +1,12 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
-import edu.up.cs301.game.GameFramework.Clue.ClueGameState;
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
-import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 
-import android.graphics.Color;
-import android.graphics.PorterDuff;
-import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.view.View.OnClickListener;
 import android.widget.ToggleButton;
 
@@ -66,6 +59,77 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
         // if we are not yet connected to a game, ignore
         if (game == null) return;
 
+        //Character Side Buttons
+        float buttonInactive = (float) 0.3;
+        float buttonActive = 1;
+        if (button.getId() == R.id.scarletButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.peacockButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.greenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        if (button.getId() == R.id.plumButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.whiteButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.mustardButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        //Weapon Side Buttons
+        else if (button.getId() == R.id.knifeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.revolverButon) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.candlestickButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.ropeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.leadpipeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.wrenchButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        //Room Side Buttons
+        else if (button.getId() == R.id.diningButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.hallButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.kitchenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.ballroomButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.gameroomButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.gardenButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.libraryButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.loungeButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+        else if (button.getId() == R.id.studyButton) {
+            button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+        }
+
+
+
         // Construct the action and send it to the game
         GameAction action = null;
         game.sendAction(action); // send action to the game
@@ -104,22 +168,11 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
         //add object listeners for buttons
 
-        final ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Log.i("Clue", "Pressed Scarlet");
-                scarletButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
-            }
-        });
+        ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
+        scarletButton.setOnClickListener(this);
 
         ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
-        scarletButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
+        peacockButton.setOnClickListener(this);
 
 
         // if we have a game state, "simulate" that we have just received

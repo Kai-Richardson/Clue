@@ -237,16 +237,16 @@
                         android:textOn="@string/ballroom" />
 
                     <ToggleButton
-                        android:id="@+id/billardButton"
+                        android:id="@+id/gameroomButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="#7986CB"
-                        android:textOff="@string/billard"
-                        android:textOn="@string/billard" />
+                        android:textOff="@string/gameroom"
+                        android:textOn="@string/gameroom" />
 
                     <ToggleButton
-                        android:id="@+id/conservButton"
+                        android:id="@+id/gardenButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
