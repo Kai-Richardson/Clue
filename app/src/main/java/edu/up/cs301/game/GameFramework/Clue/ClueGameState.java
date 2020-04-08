@@ -3,6 +3,9 @@ package edu.up.cs301.game.GameFramework.Clue;
 import android.service.quicksettings.Tile;
 import android.widget.ProgressBar;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
 public class ClueGameState extends GameState
@@ -12,11 +15,16 @@ public class ClueGameState extends GameState
     private int[] rollResult;
     private TileData[][] board = new TileData[25][25];
     private Card[] suggestedCards;
-    private Card[] winningCards = new Card[3];
     private int moves;
     private int whoseMove;
+    private ArrayList<Card> deck = new ArrayList<Card>();
+    private ArrayList<Card> winningCards = new ArrayList<Card>();
+
+    private int handSize;
+    private Card[][] playerHands;
+
     //maybe have a variable for all cards dealt, and it is accessed using player ID int
-    //if any variables are added here, make sure to assign them in the two constuctors
+    //if any variables are added here, make sure to assign them in the two constructors
 
 
     //some stuff for interface
@@ -24,6 +32,70 @@ public class ClueGameState extends GameState
 
     public ClueGameState()
     {
+
+        //make deck
+        deck.add(new Card("wrench", 2));
+        deck.add(new Card("candlestick", 2));
+        deck.add(new Card("pipe", 2));
+        deck.add(new Card("rope", 2));
+        deck.add(new Card("gun", 2));
+        deck.add(new Card("knife", 2));
+        deck.add(new Card("yard", 0));
+        deck.add(new Card("conservatory", 0));
+        deck.add(new Card("lounge", 0));
+        deck.add(new Card("kitchen", 0));
+        deck.add(new Card("courtyard", 0));
+        deck.add(new Card("pool", 0));
+        deck.add(new Card("ballroom", 0));
+        deck.add(new Card("dining", 0));
+        deck.add(new Card("library", 0));
+        deck.add(new Card("scarlet", 1));
+        deck.add(new Card("plum", 1));
+        deck.add(new Card("mustard", 1));
+        deck.add(new Card("green", 1));
+        deck.add(new Card("white", 1));
+        deck.add(new Card("peacock", 1));
+
+        Collections.shuffle(deck);
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 0)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
+
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 1)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
+
+        for(Card card: deck)
+        {
+            if(card.getCardType() == 2)
+            {
+                winningCards.add(card);
+                deck.remove(card);
+                break;
+            }
+        }
+        playerHands = new Card[deck.size()/players.length][players.length];
+        int numPlayers = players.length;
+        handSize = deck.size()/numPlayers;
+        for(int i = 0; i < handSize; i++) {
+            for (int j = 0; j < numPlayers; j++) {
+                playerHands[i][j] = deck.get(0);
+                deck.remove(0);
+            }
+        }
+
 
         //walls with no rooms
         board[0][7] = new TileData("wall", true);

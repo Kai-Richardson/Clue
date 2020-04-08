@@ -7,10 +7,14 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
+
+import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.view.View.OnClickListener;
+import android.widget.ToggleButton;
 
 
 public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener {
@@ -30,6 +34,23 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
     public ClueHumanPlayer(String name)
     {
         super(name);
+
+        final ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
+        scarletButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                scarletButton.getBackground().setColorFilter(Color.GRAY, PorterDuff.Mode.MULTIPLY);
+            }
+        });
+
+        ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
+        scarletButton.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+
     }
 
     /**
