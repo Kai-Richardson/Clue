@@ -26,6 +26,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	// the android activity that we are running
 	private GameMainActivity myActivity;
 
+	private Button loadSuggestView;
+	private Button loadAccuseView;
+
 	/**
 	 * constructor
 	 * @param name
@@ -69,93 +72,51 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		float buttonInactive = (float) 0.3;
 		float buttonActive = 1;
 
-		if (button.getId() == R.id.scarletButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.peacockButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.greenButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.plumButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.whiteButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.mustardButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		//Weapon Side Buttons
-		else if (button.getId() == R.id.knifeButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.revolverButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.candlestickButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.ropeButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.leadpipeButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.wrenchButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		//Room Side Buttons
-		else if (button.getId() == R.id.diningButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.hallButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.kitchenButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.ballroomButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.gameroomButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.gardenButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.libraryButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.loungeButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		else if (button.getId() == R.id.studyButton) {
-			button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
-		}
-		//Action Buttons
-		else if (button.getId() == R.id.moveButton) {
-			attemptStateChange("move");
-		}
-		else if (button.getId() == R.id.suggestButton) {
-			attemptStateChange("suggest");
-		}
-		else if (button.getId() == R.id.acuseButton) {
-			attemptStateChange("acuse");
-		}
-		//Move Key Buttons
-		else if (button.getId() == R.id.buttonUp) {
-			attemptMove("up");
-		}
-		else if (button.getId() == R.id.buttonRight) {
-			attemptMove("right");
-		}
-		else if (button.getId() == R.id.buttonDown) {
-			attemptMove("down");
-		}
-		else if (button.getId() == R.id.buttonLeft) {
-			attemptMove("left");
+		switch (button.getId()) {
+
+			case R.id.scarletButton:
+			case R.id.peacockButton:
+			case R.id.greenButton:
+			case R.id.plumButton:
+			case R.id.whiteButton:
+			case R.id.mustardButton:
+				//Weapon Side Buttons
+			case R.id.knifeButton:
+			case R.id.revolverButton:
+			case R.id.candlestickButton:
+			case R.id.leadpipeButton:
+			case R.id.ropeButton:
+			case R.id.wrenchButton:
+				//Room Side Buttons
+			case R.id.diningButton:
+			case R.id.hallButton:
+			case R.id.kitchenButton:
+			case R.id.ballroomButton:
+			case R.id.gameroomButton:
+			case R.id.gardenButton:
+			case R.id.libraryButton:
+			case R.id.loungeButton:
+			case R.id.studyButton:
+				button.setAlpha(button.getAlpha() == buttonInactive ? buttonActive : buttonInactive);
+				break;
+
+			//Action Buttons
+			case R.id.moveButton:
+				attemptStateChange("move");
+			case R.id.suggestButton:
+				attemptStateChange("suggest");
+			case R.id.acuseButton:
+				attemptStateChange("accuse");
+
+			//Move Key Buttons
+			case R.id.buttonUp:
+				attemptStateChange("up");
+			case R.id.buttonDown:
+				attemptStateChange("down");
+			case R.id.buttonLeft:
+				attemptStateChange("left");
+			case R.id.buttonRight:
+				attemptStateChange("right");
 		}
 
 
@@ -268,6 +229,13 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		//load layout for GUI
 		myActivity.setContentView(R.layout.clue_board_layout);
 
+		//Setup fragment view loaders
+		loadSuggestView = myActivity.findViewById(R.id.suggestButton);
+		loadSuggestView.setOnClickListener(this);
+		loadAccuseView = myActivity.findViewById(R.id.acuseButton);
+		loadAccuseView.setOnClickListener(this);
+
+
 		//add object listeners for buttons
 
 		//Character Side Buttons
@@ -356,13 +324,12 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		canvas.drawCircle(Grid2Coord(19), Grid2Coord(19), 10, paint);
 		canvas.drawCircle(Grid2Coord(20), Grid2Coord(20), 10, paint);
 		canvas.drawCircle(Grid2Coord(23), Grid2Coord(23), 10, paint);
-		canvas.drawCircle(Grid2Coord(0), Grid2Coord(16), 10, paint);
-		canvas.drawCircle(Grid2Coord(16), Grid2Coord(0), 10, paint);
+		canvas.drawCircle(Grid2Coord(0), Grid2Coord(24), 10, paint);
+		canvas.drawCircle(Grid2Coord(24), Grid2Coord(0), 10, paint);
 		paint.setColor(Color.RED);
 		canvas.drawCircle(Grid2Coord(24), Grid2Coord(24), 10, paint);
 
 		imageView.setImageBitmap(bitmap);
-
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
@@ -373,6 +340,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	//Converts Grid values to raw x,y coordinates to draw on
 	private int Grid2Coord(int x){
+		if (x < 0 || 24 < x) return 328; //Middle to make it clear it was bad
 		return 15+(x*30);
 	};
 
