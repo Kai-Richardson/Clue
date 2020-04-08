@@ -48,8 +48,75 @@ public class ClueLocalGame extends LocalGame
         if(action instanceof ClueRollAction)
         {
             ClueRollAction cra = (ClueRollAction)action;
+            int playerId = getPlayerIdx(cra.getPlayer());
+            if(!(canMove(playerId)))
+            {
+                return false;
+            }
+            if(gameState.getGameStage() != 0)
+            {
+                return false;
+            }
+            gameState.setRollResult(cra.getDice());
+            gameState.setGameStage(1);
+            return true;
 
+        }
+        if(action instanceof ClueMoveAction)
+        {
+            ClueMoveAction cma = (ClueMoveAction)action;
+            int playerId = getPlayerIdx(cma.getPlayer());
+            if(!(canMove(playerId)))
+            {
+                return false;
+            }
+            if(gameState.getMovesLeft() <= 0 || gameState.getGameStage() != 1)
+            {
+                return false;
+            }
+            int xMove = gameState.getPlayerX(playerId);
+            int yMove = gameState.getPlayerY(playerId);
+            TileData currentSpot = gameState.getTileDataAtCoord(xMove, yMove);
+            if(cma.getDirection() == 0)
+            {
+                yMove--;
+            }
+            if(cma.getDirection() == 1)
+            {
+                xMove++;
+            }
+            if(cma.getDirection() == 2)
+            {
+                yMove++;
+            }
+            if(cma.getDirection() == 3)
+            {
+                xMove--;
+            }
 
+            TileData projectedMove = gameState.getTileDataAtCoord(xMove, yMove);
+            if(xMove > 24 || xMove < 0 || yMove > 24 || yMove < 0)
+            {
+                 return false;
+            }
+            if(projectedMove.hasPlayer() || projectedMove.isWall())
+            {
+                return false;
+            }
+            currentSpot.removePlayer();
+            projectedMove.addPlayer();
+            gameState.setPlayerX(playerId, xMove);
+            gameState.setPlayerY(playerId, yMove);
+            gameState.decreaseMoves();
+            if(gameState.getMovesLeft() == 0)
+            {
+                //move to accuse stage
+                gameState.setGameStage(4);
+            }
+            if(projectedMove.getRoom().getName() != null)
+            {
+                gameState.setGameStage(3);
+            }
         }
         return false; //filler
     }

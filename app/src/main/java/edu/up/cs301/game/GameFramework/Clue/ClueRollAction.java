@@ -8,7 +8,6 @@ import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 public class ClueRollAction extends GameAction
 {
     private int[] dice;
-    private int rollResult;
 
 
     public ClueRollAction(GamePlayer pl)
@@ -18,11 +17,10 @@ public class ClueRollAction extends GameAction
         dice = new int[2];
         dice[0] = random.nextInt(5)+1;
         dice[1] = random.nextInt(5)+1;
-        rollResult = dice[0] + dice[1];
     }
 
-    public int getRollResult()
+    public int[] getDice()
     {
-        return rollResult;
+        return dice;
     }
 }

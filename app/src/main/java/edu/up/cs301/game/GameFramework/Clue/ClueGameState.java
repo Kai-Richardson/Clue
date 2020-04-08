@@ -17,6 +17,8 @@ public class ClueGameState extends GameState
     private Card[] suggestedCards;
     private int moves;
     private int whoseMove;
+    private int[] playerX;
+    private int[] playerY;
     private ArrayList<Card> deck = new ArrayList<Card>();
     private ArrayList<Card> winningCards = new ArrayList<Card>();
 
@@ -688,6 +690,14 @@ public class ClueGameState extends GameState
         //this will assign the board and choose cards for players
 
         whoseMove = 0;
+        //predefine starting positions for two players
+        playerX = new int[2];
+        playerY = new int[2];
+        playerX[0] = 0;
+        playerY[0] = 8;
+        playerX[1] = 24;
+        playerY[1] = 17;
+
     }
 
     public ClueGameState(ClueGameState or) {
@@ -708,6 +718,8 @@ public class ClueGameState extends GameState
         return moves;
     }
 
+    public void decreaseMoves() { moves--; }
+
     public void setRollResult(int[] roll)
     {
         this.rollResult = roll;
@@ -715,4 +727,34 @@ public class ClueGameState extends GameState
     }
 
     public int getGameStage() { return gameStage; }
+
+    public void setGameStage(int gs)
+    {
+        this.gameStage = gs;
+    }
+
+    public TileData getTileDataAtCoord(int x, int y)
+    {
+        return board[x][y];
+    }
+
+    public int getPlayerX(int i)
+    {
+        return playerX[i];
+    }
+
+    public void setPlayerX(int i, int j)
+    {
+        playerX[i] = j;
+    }
+
+    public int getPlayerY(int i)
+    {
+        return playerY[i];
+    }
+
+    public void setPlayerY(int i, int j)
+    {
+        playerY[i] = j;
+    }
 }
