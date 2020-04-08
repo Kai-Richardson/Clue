@@ -27,17 +27,17 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.clue_suggest_layout, container, false);
+		View myView = inflater.inflate(R.layout.clue_suggest_layout, container, false);
 
 		//do whatever you want here - like set text to display in your fragment
 
-		Button cancelButtonSugg = myActivity.findViewById(R.id.cancelButtonSugg);
+		Button cancelButtonSugg = myView.findViewById(R.id.cancelButtonSugg);
 		cancelButtonSugg.setOnClickListener(this);
 
 
 
 
-		return view;
+		return myView;
 	}
 
 	@Override
