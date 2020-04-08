@@ -4,7 +4,6 @@ import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
@@ -14,79 +13,13 @@ public class ClueLocalGame extends LocalGame
 {
     //private Player whoseTurn;
     private int movesLeft;
-    private ArrayList<Card> winningCards = new ArrayList<Card>();
-    private ArrayList<Card> deck = new ArrayList<Card>();
-    private ClueGameState gameState;
-    private int handSize;
-    private Card[][] playerHands = new Card[deck.size()/players.length][players.length];
 
+
+    private ClueGameState gameState;
 
     public ClueLocalGame()
     {
         this.gameState = new ClueGameState();
-
-        //make deck
-        deck.add(new Card("wrench", 2));
-        deck.add(new Card("candlestick", 2));
-        deck.add(new Card("pipe", 2));
-        deck.add(new Card("rope", 2));
-        deck.add(new Card("gun", 2));
-        deck.add(new Card("knife", 2));
-        deck.add(new Card("yard", 0));
-        deck.add(new Card("conservatory", 0));
-        deck.add(new Card("lounge", 0));
-        deck.add(new Card("kitchen", 0));
-        deck.add(new Card("courtyard", 0));
-        deck.add(new Card("pool", 0));
-        deck.add(new Card("ballroom", 0));
-        deck.add(new Card("dining", 0));
-        deck.add(new Card("library", 0));
-        deck.add(new Card("scarlet", 1));
-        deck.add(new Card("plum", 1));
-        deck.add(new Card("mustard", 1));
-        deck.add(new Card("green", 1));
-        deck.add(new Card("white", 1));
-        deck.add(new Card("peacock", 1));
-
-        Collections.shuffle(deck);
-        for(Card card: deck)
-        {
-            if(card.getCardType() == 0)
-            {
-                winningCards.add(card);
-                deck.remove(card);
-                break;
-            }
-        }
-
-        for(Card card: deck)
-        {
-            if(card.getCardType() == 1)
-            {
-                winningCards.add(card);
-                deck.remove(card);
-                break;
-            }
-        }
-
-        for(Card card: deck)
-        {
-            if(card.getCardType() == 2)
-            {
-                winningCards.add(card);
-                deck.remove(card);
-                break;
-            }
-        }
-        int numPlayers = players.length;
-        handSize = deck.size()/numPlayers;
-        for(int i = 0; i < handSize; i++) {
-            for (int j = 0; j < numPlayers; j++) {
-                playerHands[i][j] = deck.get(0);
-                deck.remove(0);
-            }
-        }
-
     }
 
     @Override
@@ -150,15 +83,14 @@ public class ClueLocalGame extends LocalGame
     {
         int correct = 0;
         for(Card card: cd){
-            if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
-                correct++;
+            //if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
+           //     correct++;
+            //}
+            if(correct == 3){
+                return true;
             }
-        }
-        if(correct == 3){
-            return true;
         }
         return false;
     }
-
 
 }
