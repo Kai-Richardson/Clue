@@ -23,7 +23,6 @@ public class ClueGameState extends GameState
 
     public ClueGameState()
     {
-
         //walls with no rooms
         board[0][7] = new TileData("wall", true);
         board[0][9] = new TileData("wall", true);
