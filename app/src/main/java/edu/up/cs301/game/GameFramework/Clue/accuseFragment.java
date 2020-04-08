@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import edu.up.cs301.game.R;
 
@@ -25,16 +26,23 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
-		View view = inflater.inflate(R.layout.clue_accuse_layout, container, false);
+		View myView = inflater.inflate(R.layout.clue_accuse_layout, container, false);
 
 		//do whatever you want here - like adding a listview or anything
 
+		Button cancelButtonAcc = myView.findViewById(R.id.cancelButtonAcc);
+		cancelButtonAcc.setOnClickListener(this);
 
-		return view;
+		return myView;
 	}
 
 	@Override
-	public void onClick(View view) {
+	public void onClick(View button) {
+
+		switch (button.getId()) {
+			case R.id.cancelButtonAcc:
+				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+		}
 
 		//Maybe use this to close:
 		// if confirm button

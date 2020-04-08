@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import edu.up.cs301.game.R;
 
@@ -30,6 +31,9 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 
 		//do whatever you want here - like set text to display in your fragment
 
+		Button cancelButtonSugg = myActivity.findViewById(R.id.cancelButtonSugg);
+		cancelButtonSugg.setOnClickListener(this);
+
 
 
 
@@ -37,7 +41,12 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	}
 
 	@Override
-	public void onClick(View view) {
+	public void onClick(View button) {
+
+		switch (button.getId()) {
+			case R.id.cancelButtonSugg:
+				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+		}
 
 		//Maybe use this to close:
 		// if confirm button
