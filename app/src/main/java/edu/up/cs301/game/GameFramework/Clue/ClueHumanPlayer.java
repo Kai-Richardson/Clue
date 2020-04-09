@@ -33,6 +33,10 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	private Button loadAccuseView;
 	private FragmentManager ourFragMan;
 
+	private ImageView ourDrawingImageView;
+	private Bitmap ourDrawingBitmap;
+	private Canvas ourCanvas;
+
 	/**
 	 * constructor
 	 *
@@ -310,19 +314,20 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ToggleButton leftArrow = myActivity.findViewById(R.id.buttonLeft);
 		leftArrow.setOnClickListener(this);
 
-		ImageView imageView = myActivity.findViewById(R.id.boardView);
-		Bitmap bitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
-		Canvas canvas = new Canvas(bitmap);
+		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
+		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
+		ourCanvas = new Canvas(ourDrawingBitmap);
 
-		drawPlayerAtGrid(8, 0, "purple", canvas);
-		drawPlayerAtGrid(0, 5, "blue", canvas);
-		drawPlayerAtGrid(7, 24, "yellow", canvas);
-		drawPlayerAtGrid(17, 24, "green", canvas);
-		drawPlayerAtGrid(24, 18, "red", canvas);
-		drawPlayerAtGrid(24, 8, "white", canvas);
+		//need to parse incoming game state/action stuff in updateDisplay and do this drawing there
+		drawPlayerAtGrid(8, 0, "purple", ourCanvas);
+		drawPlayerAtGrid(0, 5, "blue", ourCanvas);
+		drawPlayerAtGrid(7, 24, "yellow", ourCanvas);
+		drawPlayerAtGrid(17, 24, "green", ourCanvas);
+		drawPlayerAtGrid(24, 18, "red", ourCanvas);
+		drawPlayerAtGrid(24, 8, "white", ourCanvas);
 
-
-		imageView.setImageBitmap(bitmap);
+		ourDrawingImageView.setImageBitmap(ourDrawingBitmap);
+		//
 
 		// if we have a game state, "simulate" that we have just received
 		// the state from the game so that the GUI values are updated
@@ -339,7 +344,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	/**
 	 * Loads a 'Fragment' - aka a popup View
-	 * <p>
+	 *
 	 * This fragment container will be part of the main view.
 	 */
 	public void loadFragment(Fragment frag, String tag) {
