@@ -199,14 +199,21 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 
 	//Should attempt to switch state (move, sugg., accuse) by sending an action according to the type
+	//Not just by switching like this, but query the localgame if its allowed
 	private void attemptStateChange(String type) {
 
-		if (type.equals("accuse")) {
-			accuseFragment accuseFragment = new accuseFragment();
-			loadFragment(accuseFragment, "fragmentAccuse");
-		} else if (type.equals("suggest")) {
-			suggestFragment suggestFragment = new suggestFragment();
-			loadFragment(suggestFragment, "fragmentSuggest");
+		switch (type) {
+			case "accuse":
+				accuseFragment accuseFragment = new accuseFragment();
+				loadFragment(accuseFragment, "fragmentAccuse");
+				break;
+			case "suggest":
+				suggestFragment suggestFragment = new suggestFragment();
+				loadFragment(suggestFragment, "fragmentSuggest");
+				break;
+			case "move":
+				switchToMoveMode();
+				break;
 		}
 
 	}
@@ -255,6 +262,10 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ourFragMan = myActivity.getFragmentManager();
 
 		//add object listeners for buttons
+
+		//Setup move state switch button
+		Button moveButton = myActivity.findViewById(R.id.moveButton);
+		moveButton.setOnClickListener(this);
 
 		//Character Side Buttons
 		ToggleButton scarletButton = myActivity.findViewById(R.id.scarletButton);
@@ -364,7 +375,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	/**
 	 * Draws a player icon (circle) at the specified grid location. Pass coords, color, and canvas
-	 * Colors: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver, and teal
+	 * Colors: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray,
+	 * grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver, and teal
 	 */
 	public void drawPlayerAtGrid(int x, int y, String color, Canvas g) {
 		Paint paint = new Paint(Paint.DITHER_FLAG);
