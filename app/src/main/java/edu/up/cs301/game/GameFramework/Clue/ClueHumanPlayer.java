@@ -35,11 +35,10 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	/**
 	 * constructor
-	 * @param name
-	 * 		the player's name
+	 *
+	 * @param name the player's name
 	 */
-	public ClueHumanPlayer(String name)
-	{
+	public ClueHumanPlayer(String name) {
 		super(name);
 
 	}
@@ -47,8 +46,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	/**
 	 * Returns the GUI's top view object
 	 *
-	 * @return
-	 * 		the top object in the GUI's view heirarchy
+	 * @return the top object in the GUI's view heirarchy
 	 */
 	public View getTopView() {
 		return myActivity.findViewById(R.id.clue_board_layout);
@@ -65,8 +63,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	 * this method gets called when the user clicks the '+' or '-' button. It
 	 * creates a new CounterMoveAction to return to the parent activity.
 	 *
-	 * @param button
-	 * 		the button that was clicked
+	 * @param button the button that was clicked
 	 */
 	public void onClick(View button) {
 		// if we are not yet connected to a game, ignore
@@ -131,7 +128,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		}
 
 
-
 		// Construct the action and send it to the game
 		GameAction action = null;
 		game.sendAction(action); // send action to the game
@@ -140,60 +136,60 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	//Hides state buttons and shows move interface
 	public void switchToMoveMode() {
 		//Hides State Buttons
-		Button moveButton = getTopView().findViewById(R.id.moveButton);
+		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setVisibility(View.INVISIBLE);
 		moveButton.setClickable(false);
-		Button suggButton = getTopView().findViewById(R.id.suggestButton);
+		Button suggButton = myActivity.findViewById(R.id.suggestButton);
 		suggButton.setVisibility(View.INVISIBLE);
 		suggButton.setClickable(false);
-		Button accButton = getTopView().findViewById(R.id.acuseButton);
+		Button accButton = myActivity.findViewById(R.id.acuseButton);
 		accButton.setVisibility(View.INVISIBLE);
 		accButton.setClickable(false);
 
 		//Shows Move Buttons
-		Button up = getTopView().findViewById(R.id.buttonUp);
+		Button up = myActivity.findViewById(R.id.buttonUp);
 		up.setVisibility(View.VISIBLE);
 		up.setClickable(true);
-		Button down = getTopView().findViewById(R.id.buttonDown);
+		Button down = myActivity.findViewById(R.id.buttonDown);
 		down.setVisibility(View.VISIBLE);
 		down.setClickable(true);
-		Button left = getTopView().findViewById(R.id.buttonLeft);
+		Button left = myActivity.findViewById(R.id.buttonLeft);
 		left.setVisibility(View.VISIBLE);
 		left.setClickable(true);
-		Button right = getTopView().findViewById(R.id.buttonRight);
+		Button right = myActivity.findViewById(R.id.buttonRight);
 		right.setVisibility(View.VISIBLE);
 		right.setClickable(true);
-		Button display = getTopView().findViewById(R.id.displayMovesButton);
+		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.VISIBLE);
 	}
 
 	//Switches away from move mode, to state mode
 	public void switchToStateMode() {
 		//Shows State Buttons
-		Button moveButton = getTopView().findViewById(R.id.moveButton);
+		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setVisibility(View.VISIBLE);
 		moveButton.setClickable(true);
-		Button suggButton = getTopView().findViewById(R.id.suggestButton);
+		Button suggButton = myActivity.findViewById(R.id.suggestButton);
 		suggButton.setVisibility(View.VISIBLE);
 		suggButton.setClickable(true);
-		Button accButton = getTopView().findViewById(R.id.acuseButton);
+		Button accButton = myActivity.findViewById(R.id.acuseButton);
 		accButton.setVisibility(View.VISIBLE);
 		accButton.setClickable(true);
 
 		//Hides Move Buttons
-		Button up = getTopView().findViewById(R.id.buttonUp);
+		Button up = myActivity.findViewById(R.id.buttonUp);
 		up.setVisibility(View.INVISIBLE);
 		up.setClickable(false);
-		Button down = getTopView().findViewById(R.id.buttonDown);
+		Button down = myActivity.findViewById(R.id.buttonDown);
 		down.setVisibility(View.INVISIBLE);
 		down.setClickable(false);
-		Button left = getTopView().findViewById(R.id.buttonLeft);
+		Button left = myActivity.findViewById(R.id.buttonLeft);
 		left.setVisibility(View.INVISIBLE);
 		left.setClickable(false);
-		Button right = getTopView().findViewById(R.id.buttonRight);
+		Button right = myActivity.findViewById(R.id.buttonRight);
 		right.setVisibility(View.INVISIBLE);
 		right.setClickable(false);
-		Button display = getTopView().findViewById(R.id.displayMovesButton);
+		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.INVISIBLE);
 	}
 
@@ -204,8 +200,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		if (type.equals("accuse")) {
 			accuseFragment accuseFragment = new accuseFragment();
 			loadFragment(accuseFragment, "fragmentAccuse");
-		}
-		else if (type.equals("suggest")) {
+		} else if (type.equals("suggest")) {
 			suggestFragment suggestFragment = new suggestFragment();
 			loadFragment(suggestFragment, "fragmentSuggest");
 		}
@@ -221,8 +216,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	/**
 	 * callback method when we get a message (e.g., from the game)
 	 *
-	 * @param info
-	 * 		the message
+	 * @param info the message
 	 */
 	@Override
 	public void receiveInfo(GameInfo info) {
@@ -238,8 +232,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	 * callback method--our game has been chosen/rechosen to be the GUI,
 	 * called from the GUI thread
 	 *
-	 * @param activity
-	 * 		the activity under which we are running
+	 * @param activity the activity under which we are running
 	 */
 	public void setAsGui(GameMainActivity activity) {
 
@@ -260,95 +253,74 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		//add object listeners for buttons
 
 		//Character Side Buttons
-		ToggleButton scarletButton = getTopView().findViewById(R.id.scarletButton);
+		ToggleButton scarletButton = myActivity.findViewById(R.id.scarletButton);
 		scarletButton.setOnClickListener(this);
-		ToggleButton peacockButton = getTopView().findViewById(R.id.peacockButton);
+		ToggleButton peacockButton = myActivity.findViewById(R.id.peacockButton);
 		peacockButton.setOnClickListener(this);
-		ToggleButton greenButton = getTopView().findViewById(R.id.greenButton);
+		ToggleButton greenButton = myActivity.findViewById(R.id.greenButton);
 		greenButton.setOnClickListener(this);
-		ToggleButton plumButton = getTopView().findViewById(R.id.plumButton);
+		ToggleButton plumButton = myActivity.findViewById(R.id.plumButton);
 		plumButton.setOnClickListener(this);
-		ToggleButton whiteButton = getTopView().findViewById(R.id.whiteButton);
+		ToggleButton whiteButton = myActivity.findViewById(R.id.whiteButton);
 		whiteButton.setOnClickListener(this);
-		ToggleButton mustardButton = getTopView().findViewById(R.id.mustardButton);
+		ToggleButton mustardButton = myActivity.findViewById(R.id.mustardButton);
 		mustardButton.setOnClickListener(this);
 
 		//Weapon Side Buttons
-		ToggleButton knifeButton = getTopView().findViewById(R.id.knifeButton);
+		ToggleButton knifeButton = myActivity.findViewById(R.id.knifeButton);
 		knifeButton.setOnClickListener(this);
-		ToggleButton revolverButton = getTopView().findViewById(R.id.revolverButton);
+		ToggleButton revolverButton = myActivity.findViewById(R.id.revolverButton);
 		revolverButton.setOnClickListener(this);
-		ToggleButton candlestickButton = getTopView().findViewById(R.id.candlestickButton);
+		ToggleButton candlestickButton = myActivity.findViewById(R.id.candlestickButton);
 		candlestickButton.setOnClickListener(this);
-		ToggleButton ropeButton = getTopView().findViewById(R.id.ropeButton);
+		ToggleButton ropeButton = myActivity.findViewById(R.id.ropeButton);
 		ropeButton.setOnClickListener(this);
-		ToggleButton leadpipeButton = getTopView().findViewById(R.id.leadpipeButton);
+		ToggleButton leadpipeButton = myActivity.findViewById(R.id.leadpipeButton);
 		leadpipeButton.setOnClickListener(this);
-		ToggleButton wrenchButton = getTopView().findViewById(R.id.wrenchButton);
+		ToggleButton wrenchButton = myActivity.findViewById(R.id.wrenchButton);
 		wrenchButton.setOnClickListener(this);
 
 		//Room Side buttons
-		ToggleButton diningButton = getTopView().findViewById(R.id.diningButton);
+		ToggleButton diningButton = myActivity.findViewById(R.id.diningButton);
 		diningButton.setOnClickListener(this);
-		ToggleButton hallButton = getTopView().findViewById(R.id.hallButton);
+		ToggleButton hallButton = myActivity.findViewById(R.id.hallButton);
 		hallButton.setOnClickListener(this);
-		ToggleButton kitchenButton = getTopView().findViewById(R.id.kitchenButton);
+		ToggleButton kitchenButton = myActivity.findViewById(R.id.kitchenButton);
 		kitchenButton.setOnClickListener(this);
-		ToggleButton ballroomButton = getTopView().findViewById(R.id.ballroomButton);
+		ToggleButton ballroomButton = myActivity.findViewById(R.id.ballroomButton);
 		ballroomButton.setOnClickListener(this);
-		ToggleButton gameroomButton = getTopView().findViewById(R.id.gameroomButton);
+		ToggleButton gameroomButton = myActivity.findViewById(R.id.gameroomButton);
 		gameroomButton.setOnClickListener(this);
-		ToggleButton gardenButton = getTopView().findViewById(R.id.gardenButton);
+		ToggleButton gardenButton = myActivity.findViewById(R.id.gardenButton);
 		gardenButton.setOnClickListener(this);
-		ToggleButton libraryButton = getTopView().findViewById(R.id.libraryButton);
+		ToggleButton libraryButton = myActivity.findViewById(R.id.libraryButton);
 		libraryButton.setOnClickListener(this);
-		ToggleButton loungeButton = getTopView().findViewById(R.id.loungeButton);
+		ToggleButton loungeButton = myActivity.findViewById(R.id.loungeButton);
 		loungeButton.setOnClickListener(this);
-		ToggleButton studyButton = getTopView().findViewById(R.id.studyButton);
+		ToggleButton studyButton = myActivity.findViewById(R.id.studyButton);
 		studyButton.setOnClickListener(this);
 
 		//Move Key Listeners
-		ToggleButton upArrow = getTopView().findViewById(R.id.buttonUp);
+		ToggleButton upArrow = myActivity.findViewById(R.id.buttonUp);
 		upArrow.setOnClickListener(this);
-		ToggleButton rightArrow = getTopView().findViewById(R.id.buttonRight);
+		ToggleButton rightArrow = myActivity.findViewById(R.id.buttonRight);
 		rightArrow.setOnClickListener(this);
-		ToggleButton downArrow = getTopView().findViewById(R.id.buttonDown);
+		ToggleButton downArrow = myActivity.findViewById(R.id.buttonDown);
 		downArrow.setOnClickListener(this);
-		ToggleButton leftArrow = getTopView().findViewById(R.id.buttonLeft);
+		ToggleButton leftArrow = myActivity.findViewById(R.id.buttonLeft);
 		leftArrow.setOnClickListener(this);
 
-		ImageView imageView = (ImageView) getTopView().findViewById(R.id.boardView);
+		ImageView imageView = myActivity.findViewById(R.id.boardView);
 		Bitmap bitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
 		Canvas canvas = new Canvas(bitmap);
-		Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-		paint.setColor(Color.BLUE);
-		canvas.drawCircle(Grid2Coord(0), Grid2Coord(0), 10, paint);
-		paint.setColor(Color.MAGENTA);
-		canvas.drawCircle(Grid2Coord(1), Grid2Coord(1), 10, paint);
-		canvas.drawCircle(Grid2Coord(2), Grid2Coord(2), 10, paint);
-		canvas.drawCircle(Grid2Coord(3), Grid2Coord(3), 10, paint);
-		canvas.drawCircle(Grid2Coord(4), Grid2Coord(4), 10, paint);
-		canvas.drawCircle(Grid2Coord(5), Grid2Coord(5), 10, paint);
-		canvas.drawCircle(Grid2Coord(6), Grid2Coord(6), 10, paint);
-		canvas.drawCircle(Grid2Coord(7), Grid2Coord(7), 10, paint);
-		canvas.drawCircle(Grid2Coord(8), Grid2Coord(8), 10, paint);
-		canvas.drawCircle(Grid2Coord(9), Grid2Coord(9), 10, paint);
-		canvas.drawCircle(Grid2Coord(10), Grid2Coord(10), 10, paint);
-		canvas.drawCircle(Grid2Coord(11), Grid2Coord(11), 10, paint);
-		canvas.drawCircle(Grid2Coord(12), Grid2Coord(12), 10, paint);
-		canvas.drawCircle(Grid2Coord(13), Grid2Coord(13), 10, paint);
-		canvas.drawCircle(Grid2Coord(14), Grid2Coord(14), 10, paint);
-		canvas.drawCircle(Grid2Coord(15), Grid2Coord(15), 10, paint);
-		canvas.drawCircle(Grid2Coord(16), Grid2Coord(16), 10, paint);
-		canvas.drawCircle(Grid2Coord(17), Grid2Coord(17), 10, paint);
-		canvas.drawCircle(Grid2Coord(18), Grid2Coord(18), 10, paint);
-		canvas.drawCircle(Grid2Coord(19), Grid2Coord(19), 10, paint);
-		canvas.drawCircle(Grid2Coord(20), Grid2Coord(20), 10, paint);
-		canvas.drawCircle(Grid2Coord(23), Grid2Coord(23), 10, paint);
-		canvas.drawCircle(Grid2Coord(0), Grid2Coord(24), 10, paint);
-		canvas.drawCircle(Grid2Coord(24), Grid2Coord(0), 10, paint);
-		paint.setColor(Color.RED);
-		canvas.drawCircle(Grid2Coord(24), Grid2Coord(24), 10, paint);
+
+		drawPlayerAtGrid(8, 0, "purple", canvas);
+		drawPlayerAtGrid(0, 5, "blue", canvas);
+		drawPlayerAtGrid(7, 24, "yellow", canvas);
+		drawPlayerAtGrid(17, 24, "green", canvas);
+		drawPlayerAtGrid(24, 18, "red", canvas);
+		drawPlayerAtGrid(24, 8, "white", canvas);
+
 
 		imageView.setImageBitmap(bitmap);
 
@@ -360,31 +332,42 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	}
 
 	//Converts Grid values to raw x,y coordinates to draw on
-	private int Grid2Coord(int x){
+	private int Grid2Coord(int x) {
 		if (x < 0 || 24 < x) return 328; //Middle to make it clear it was bad
-		return 15+(x*30);
-	};
+		return 15 + (x * 30);
+	}
 
-	/** Loads a 'Fragment' - aka a popup View
-	 *
+	/**
+	 * Loads a 'Fragment' - aka a popup View
+	 * <p>
 	 * This fragment container will be part of the main view.
 	 */
-	public void loadFragment(Fragment frag, String tag)
-	{
+	public void loadFragment(Fragment frag, String tag) {
 		FragmentManager fm = ourFragMan;
 		FragmentTransaction ft = fm.beginTransaction();
 
 		Fragment fragment = ourFragMan.findFragmentById(R.id.clue_board_layout);
-		if(fragment == null)
-		{
+		if (fragment == null) {
 			ft.add(R.id.clue_board_layout, frag, tag);
-		} else
-		{
+		} else {
 			ft.replace(R.id.clue_board_layout, frag, tag);
 		}
 		ft.addToBackStack(null);
 
 		ft.commit();
+	}
+
+	/**
+	 * Draws a player icon (circle) at the specified grid location. Pass coords, color, and canvas
+	 * Colors: red, blue, green, black, white, gray, cyan, magenta, yellow, lightgray, darkgray, grey, lightgrey, darkgrey, aqua, fuchsia, lime, maroon, navy, olive, purple, silver, and teal
+	 */
+	public void drawPlayerAtGrid(int x, int y, String color, Canvas g) {
+		Paint paint = new Paint(Paint.DITHER_FLAG);
+		paint.setColor(Color.parseColor(color));
+		g.drawCircle(Grid2Coord(x), Grid2Coord(y), 10, paint);
+		paint.setColor(Color.BLACK);
+		paint.setStyle(Paint.Style.STROKE);
+		g.drawCircle(Grid2Coord(x), Grid2Coord(y), 10, paint);
 	}
 
 
