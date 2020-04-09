@@ -115,19 +115,22 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 			case R.id.acuseButton:
 				attemptStateChange("accuse");
 				break;
+			case R.id.cancelMoveButton:
+				attemptStateChange("cancelMove");
+				break;
 
 			//Move Key Buttons
 			case R.id.buttonUp:
-				attemptStateChange("up");
+				attemptMove("up");
 				break;
 			case R.id.buttonDown:
-				attemptStateChange("down");
+				attemptMove("down");
 				break;
 			case R.id.buttonLeft:
-				attemptStateChange("left");
+				attemptMove("left");
 				break;
 			case R.id.buttonRight:
-				attemptStateChange("right");
+				attemptMove("right");
 				break;
 		}
 
@@ -165,6 +168,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		right.setClickable(true);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.VISIBLE);
+		Button cancel = myActivity.findViewById(R.id.cancelMoveButton);
+		cancel.setVisibility(View.VISIBLE);
+		cancel.setClickable(true);
 	}
 
 	//Switches away from move mode, to state mode
@@ -195,6 +201,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		right.setClickable(false);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.INVISIBLE);
+		Button cancel = myActivity.findViewById(R.id.cancelMoveButton);
+		cancel.setVisibility(View.INVISIBLE);
+		cancel.setClickable(false);
 	}
 
 
@@ -213,6 +222,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				break;
 			case "move":
 				switchToMoveMode();
+				break;
+			case "cancelMove":
+				switchToStateMode();
 				break;
 		}
 
@@ -324,6 +336,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		downArrow.setOnClickListener(this);
 		ToggleButton leftArrow = myActivity.findViewById(R.id.buttonLeft);
 		leftArrow.setOnClickListener(this);
+		ToggleButton cancelButton = myActivity.findViewById(R.id.cancelMoveButton);
+		cancelButton.setOnClickListener(this);
 
 		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
 		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
