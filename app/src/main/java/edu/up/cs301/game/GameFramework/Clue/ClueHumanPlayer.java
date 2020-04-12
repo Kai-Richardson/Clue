@@ -2,6 +2,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
+import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
@@ -233,7 +234,24 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	//Should attempt move by sending action according to dir
 	private void attemptMove(String dir) {
-
+		switch (dir) {
+			case "up":
+				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
+				game.sendAction(moveActionUp);
+				break;
+			case "down":
+				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
+				game.sendAction(moveAction1Down);
+				break;
+			case "left":
+				ClueMoveAction moveAction2 = new ClueMoveAction(this, 1);
+				game.sendAction(moveAction2);
+				break;
+			case "right":
+				ClueMoveAction moveAction3 = new ClueMoveAction(this, 3);
+				game.sendAction(moveAction3);
+				break;
+		}
 	}
 
 	/**
