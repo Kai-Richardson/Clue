@@ -14,7 +14,6 @@ public class ClueGameState extends GameState implements Serializable
 {
 
     private int gameStage;
-    private int[] rollResult;
     private TileData[][] board = new TileData[25][25];
     private Card[] suggestedCards;
     private int moves;
@@ -702,10 +701,20 @@ public class ClueGameState extends GameState implements Serializable
     }
 
     public ClueGameState(ClueGameState or) {
-        rollResult = or.rollResult;
         suggestedCards = or.suggestedCards;
-        board = or.board;
         //if other variables are added, they need to be added here too
+        gameStage = or.gameStage;
+        board = or.board;
+        moves = or.moves;
+        whoseMove = or.whoseMove;
+        playerX = or.playerX;
+        playerY = or.playerY;
+        deck = or.deck;
+        winningCards = or.winningCards;
+
+        handSize = or.handSize;
+        playerHands = or.playerHands;
+
     }
 
 
@@ -721,10 +730,9 @@ public class ClueGameState extends GameState implements Serializable
 
     public void decreaseMoves() { moves--; }
 
-    public void setRollResult(int[] roll)
+    public void setRollResult(int roll)
     {
-        this.rollResult = roll;
-        moves = rollResult[0] + rollResult[1];
+        moves = roll;
     }
 
     public int getGameStage() { return gameStage; }

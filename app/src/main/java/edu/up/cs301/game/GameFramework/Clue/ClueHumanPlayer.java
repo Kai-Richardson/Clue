@@ -14,6 +14,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -143,6 +144,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	//Hides state buttons and shows move interface
 	public void switchToMoveMode() {
+		receiveInfo(state);
 		//Hides State Buttons
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setVisibility(View.INVISIBLE);
@@ -222,6 +224,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				loadFragment(suggestFragment, "fragmentSuggest");
 				break;
 			case "move":
+				game.sendAction(new ClueRollAction(this));
 				switchToMoveMode();
 				break;
 			case "cancelMove":
@@ -238,18 +241,22 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 			case "up":
 				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
 				game.sendAction(moveActionUp);
+				Log.d("move action", "up");
 				break;
 			case "down":
 				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
 				game.sendAction(moveAction1Down);
+				Log.d("move action", "down");
 				break;
 			case "left":
 				ClueMoveAction moveAction2 = new ClueMoveAction(this, 1);
 				game.sendAction(moveAction2);
+				Log.d("move action", "left");
 				break;
 			case "right":
 				ClueMoveAction moveAction3 = new ClueMoveAction(this, 3);
 				game.sendAction(moveAction3);
+				Log.d("move action", "right");
 				break;
 		}
 	}
@@ -282,6 +289,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 		//load layout for GUI
 		myActivity.setContentView(R.layout.clue_board_layout);
+
+		// if we have a game state, "simulate" that we have just received
+		// the state from the game so that the GUI values are updated
 
 		//Setup fragment view loaders
 		loadSuggestView = myActivity.findViewById(R.id.suggestButton);
@@ -357,12 +367,19 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ToggleButton cancelButton = myActivity.findViewById(R.id.cancelMoveButton);
 		cancelButton.setOnClickListener(this);
 
+
 		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
 		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
 		ourCanvas = new Canvas(ourDrawingBitmap);
 
 		//need to parse incoming game state/action stuff in updateDisplay and do this drawing there
-		drawPlayerAtGrid(8, 0, "purple", ourCanvas);
+		if(state != null)
+		{
+			drawPlayerAtGrid(Grid2Coord(state.getPlayerX(0)),Grid2Coord(state.getPlayerY(0)), "purple", ourCanvas);
+		}
+		else {
+			drawPlayerAtGrid(8, 0, "purple", ourCanvas);
+		}
 		drawPlayerAtGrid(0, 5, "blue", ourCanvas);
 		drawPlayerAtGrid(7, 24, "yellow", ourCanvas);
 		drawPlayerAtGrid(17, 24, "green", ourCanvas);
@@ -371,12 +388,10 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 		ourDrawingImageView.setImageBitmap(ourDrawingBitmap);
 		//
-
-		// if we have a game state, "simulate" that we have just received
-		// the state from the game so that the GUI values are updated
 		if (state != null) {
 			receiveInfo(state);
 		}
+		
 	}
 
 	//Converts Grid values to raw x,y coordinates to draw on

@@ -1,6 +1,7 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
 import android.support.annotation.IdRes;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
@@ -55,29 +56,42 @@ public class ClueLocalGame extends LocalGame
             int playerId = getPlayerIdx(cra.getPlayer());
             if(!(canMove(playerId)))
             {
+                Log.d("roll action", "break 1");
                 return false;
             }
             if(gameState.getGameStage() != 0)
             {
+                Log.d("roll action", "break 2");
                 return false;
             }
-            gameState.setRollResult(cra.getDice());
+            Log.d("roll action", "roll action passed");
+            Log.d("roll result", "the result in state is" + gameState.getMovesLeft());
+            gameState.setRollResult(cra.getResult());
             gameState.setGameStage(1);
             return true;
 
         }
         if(action instanceof ClueMoveAction)
         {
+            Log.d("LocalGame", "Move Registered");
+
             ClueMoveAction cma = (ClueMoveAction)action;
             int playerId = getPlayerIdx(cma.getPlayer());
+            Log.d("LocalGame", "Player turn: " + playerId);
+            Log.d("LocalGame", "actual turn: " + gameState.getWhoseTurn());
             if(!(canMove(playerId)))
             {
+                Log.d("Move", "move error 1");
                 return false;
             }
             if(gameState.getMovesLeft() <= 0 || gameState.getGameStage() != 1)
             {
+                Log.d("Move", "move error 2");
+                Log.d("Move", "moves left " + gameState.getMovesLeft());
+                Log.d("Move", "gameStage: " + gameState.getGameStage());
                 return false;
             }
+            Log.d("LocalGame", "Move part 2");
             int xMove = gameState.getPlayerX(playerId);
             int yMove = gameState.getPlayerY(playerId);
             TileData currentSpot = gameState.getTileDataAtCoord(xMove, yMove);
@@ -87,7 +101,7 @@ public class ClueLocalGame extends LocalGame
             }
             if(cma.getDirection() == 1)
             {
-                xMove++;
+                xMove--;
             }
             if(cma.getDirection() == 2)
             {
@@ -95,18 +109,21 @@ public class ClueLocalGame extends LocalGame
             }
             if(cma.getDirection() == 3)
             {
-                xMove--;
+                xMove++;
             }
 
-            TileData projectedMove = gameState.getTileDataAtCoord(xMove, yMove);
             if(xMove > 24 || xMove < 0 || yMove > 24 || yMove < 0)
             {
+                Log.d("Move", "move 3");
                  return false;
             }
+            TileData projectedMove = gameState.getTileDataAtCoord(xMove, yMove);
             if(projectedMove.hasPlayer() || projectedMove.isWall())
             {
+                Log.d("Move", "move 4");
                 return false;
             }
+            Log.d("Move", "The movement is valid");
             currentSpot.removePlayer();
             projectedMove.addPlayer();
             gameState.setPlayerX(playerId, xMove);
@@ -121,6 +138,7 @@ public class ClueLocalGame extends LocalGame
             {
                 gameState.setGameStage(3);
             }
+            Log.d("Move", "Action complete");
         }
         return false; //filler
     }

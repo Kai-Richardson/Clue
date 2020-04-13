@@ -1,5 +1,7 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import android.util.Log;
+
 import java.util.Random;
 
 import edu.up.cs301.game.GameFramework.GamePlayer;
@@ -7,20 +9,23 @@ import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 
 public class ClueRollAction extends GameAction
 {
-    private int[] dice;
+    private int die1;
+    private int die2;
+    private int rollTotal;
 
 
     public ClueRollAction(GamePlayer pl)
     {
         super(pl);
         Random random = new Random();
-        dice = new int[2];
-        dice[0] = random.nextInt(5)+1;
-        dice[1] = random.nextInt(5)+1;
+        die1 = random.nextInt(5)+1;
+        die2 = random.nextInt(5)+1;
+        rollTotal = die1 + die2;
+        Log.d("Inside roll action", "Roll Total is " + rollTotal);
     }
 
-    public int[] getDice()
+    public int getResult()
     {
-        return dice;
+        return rollTotal;
     }
 }
