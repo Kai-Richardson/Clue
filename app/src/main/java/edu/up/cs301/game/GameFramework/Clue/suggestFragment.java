@@ -100,12 +100,14 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	public void onClick(View button) {
 
 		switch (button.getId()) {
-			case R.id.cancelButtonAcc:
+			case R.id.cancelButtonSugg:
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+				break;
 
-			case R.id.confirmButtonA:
+			case R.id.confirmButtonS:
 				//new ClueSuggestAction(getChosenCharacter(), getChosenWeapon(), getChosenRoom());
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+				break;
 
 				//Character Buttons
 			case R.id.scarletButton:

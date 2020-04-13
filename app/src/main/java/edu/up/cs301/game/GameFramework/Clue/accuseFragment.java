@@ -133,11 +133,13 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 		switch (button.getId()) {
 			case R.id.cancelButtonAcc:
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+				break;
 
 			case R.id.confirmButtonA:
 				//new ClueAccuseAction(getChosenCharacter(), getChosenWeapon(), getChosenRoom());
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
-				
+				break;
+
 				//Character Buttons
 			case R.id.scarletButton:
 				if (chosenCharacter == null) {
@@ -193,7 +195,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					button.setAlpha(buttonInactive);
 				}
 				break;
-				
+
 				//Weapon Side Buttons
 			case R.id.knifeButton:
 				if (chosenWeapon == null) {
@@ -249,7 +251,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					button.setAlpha(buttonInactive);
 				}
 				break;
-				
+
 				//Room Side Buttons
 			case R.id.diningButton:
 				if (chosenRoom == null) {
@@ -259,6 +261,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.hallButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Hall", 2);
@@ -267,6 +270,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.kitchenButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Kitchen", 2);
@@ -275,6 +279,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.ballroomButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Ballroom", 2);
@@ -283,6 +288,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.gameroomButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Gameroom", 2);
@@ -291,6 +297,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.gardenButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Garden", 2);
@@ -299,6 +306,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.libraryButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Library", 2);
@@ -307,6 +315,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.loungeButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Lounge", 2);
@@ -315,6 +324,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 			case R.id.studyButton:
 				if (chosenRoom == null) {
 					chosenRoom = new Card("Study", 2);
@@ -323,6 +333,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 					chosenRoom = null;
 					button.setAlpha(buttonInactive);
 				}
+				break;
 		}
 
 	}
