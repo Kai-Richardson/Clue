@@ -14,7 +14,7 @@ public class ClueMainActivity extends GameMainActivity
     public LocalGame localGame;
     public GameConfig gameConfig;
 
-    private static final int PORT_NUMBER = 6598;
+    private static final int PORT_NUMBER = 4253;
 
     @Override
     public GameConfig createDefaultConfig()
