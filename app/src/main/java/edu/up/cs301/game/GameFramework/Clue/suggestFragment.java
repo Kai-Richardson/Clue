@@ -89,9 +89,9 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 		wrenchButton.setAlpha(buttonInactive);
 
 		//Displays the current room
-		String location = chosenRoom.getName();
+		//String location = chosenRoom.getName();
 		TextView locationDisplay = myView.findViewById(R.id.locationDisplay);
-		locationDisplay.setText(getString(R.string.locationDisplayPrefix) + location);
+		locationDisplay.setText(getString(R.string.locationDisplayPrefix) /*+ location*/);
 
 		return myView;
 	}

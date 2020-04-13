@@ -15,7 +15,6 @@ public class ClueLocalGame extends LocalGame
 {
     //private Player whoseTurn;
     private int movesLeft;
-    ClueGameState state;
 
     private ClueGameState gameState;
 
@@ -23,7 +22,7 @@ public class ClueLocalGame extends LocalGame
     {
         String[] str = new String[numPlayers];
         //this.gameState = new ClueGameState();
-        state = new ClueGameState(numPlayers, str, 0);
+	    gameState = new ClueGameState(numPlayers, str, 0);
     }
 
 
