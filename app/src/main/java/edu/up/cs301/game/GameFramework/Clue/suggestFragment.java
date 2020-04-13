@@ -99,9 +99,6 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	@Override
 	public void onClick(View button) {
 
-		float buttonInactive = (float) 0.3;
-		float buttonActive = 1;
-
 		switch (button.getId()) {
 			case R.id.cancelButtonAcc:
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
