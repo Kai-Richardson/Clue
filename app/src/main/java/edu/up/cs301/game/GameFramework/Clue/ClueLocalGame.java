@@ -1,5 +1,6 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import android.support.annotation.IdRes;
 import android.widget.ProgressBar;
 
 import java.util.ArrayList;
@@ -8,19 +9,23 @@ import java.util.Collections;
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
+import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
 public class ClueLocalGame extends LocalGame
 {
     //private Player whoseTurn;
     private int movesLeft;
-
+    ClueGameState state;
 
     private ClueGameState gameState;
 
-    public ClueLocalGame()
+    public ClueLocalGame(int numPlayers)
     {
-        this.gameState = new ClueGameState();
+        String[] str = new String[numPlayers];
+        //this.gameState = new ClueGameState();
+        state = new ClueGameState(numPlayers, str, 0);
     }
+
 
     @Override
     protected String checkIfGameOver()
