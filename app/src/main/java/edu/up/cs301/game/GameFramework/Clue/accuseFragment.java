@@ -133,6 +133,10 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 		switch (button.getId()) {
 			case R.id.cancelButtonAcc:
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
+
+			case R.id.confirmButtonA:
+				//new ClueAccuseAction(getChosenCharacter(), getChosenWeapon(), getChosenRoom());
+				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				
 				//Character Buttons
 			case R.id.scarletButton:
