@@ -17,9 +17,9 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 
 	private Activity myActivity;
 
-	private Card chosenCharacter;
-	private Card chosenWeapon;
-	private Card chosenRoom;
+	private Card chosenCharacter = null;
+	private Card chosenWeapon = null;
+	private Card chosenRoom = null;
 
 	float buttonInactive = (float) 0.5;
 	float buttonActive = 1;
@@ -29,6 +29,18 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 		super.onAttach(act);
 
 		this.myActivity = act;
+	}
+
+	public Card getChosenCharacter() {
+		return chosenCharacter;
+	}
+
+	public Card getChosenWeapon() {
+		return chosenWeapon;
+	}
+
+	public Card getChosenRoom() {
+		return chosenRoom;
 	}
 
 	@Override
