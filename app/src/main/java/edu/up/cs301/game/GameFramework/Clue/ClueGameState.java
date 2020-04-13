@@ -3,12 +3,14 @@ package edu.up.cs301.game.GameFramework.Clue;
 import android.service.quicksettings.Tile;
 import android.widget.ProgressBar;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
-public class ClueGameState extends GameState
+public class ClueGameState extends GameState implements Serializable
 {
 
     private int gameStage;
@@ -32,7 +34,7 @@ public class ClueGameState extends GameState
     //some stuff for interface
     private static final long serialVersionUID = 7737393762469851826L;
 
-    public ClueGameState()
+    public ClueGameState(int numPlayers, String[] playerName, int turnID)
     {
 
         //make deck
@@ -89,7 +91,6 @@ public class ClueGameState extends GameState
             }
         }
         playerHands = new Card[deck.size()/2][2];
-        int numPlayers = 2;
         handSize = deck.size()/numPlayers;
         for(int i = 0; i < handSize; i++) {
             for (int j = 0; j < numPlayers; j++) {
