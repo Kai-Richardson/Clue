@@ -58,6 +58,20 @@
             android:textSize="36sp"
             android:textStyle="bold" />
 
+        <TextView
+            android:id="@+id/locationDisplay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2.25"
+            android:foregroundGravity="center"
+            android:gravity="center"
+            android:padding="20dp"
+            android:text="Location: Ballroom"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="36sp"
+            android:textStyle="bold" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -229,125 +243,6 @@
                             android:background="@drawable/wrench"
                             android:textOff="@string/space"
                             android:textOn="@string/space" />
-                    </TableRow>
-
-                </TableLayout>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="10dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginRight="10dp"
-                android:layout_marginBottom="20dp"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TableLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    android:layout_weight="1">
-
-                    <TableRow
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1">
-
-                        <ToggleButton
-                            android:id="@+id/diningButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#FF8A65"
-                            android:textOff="@string/dining"
-                            android:textOn="@string/dining" />
-
-                        <ToggleButton
-                            android:id="@+id/hallButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#FFB74D"
-                            android:textOff="@string/hall"
-                            android:textOn="@string/hall" />
-
-                        <ToggleButton
-                            android:id="@+id/kitchenButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#FFF176"
-                            android:textOff="@string/kitchen"
-                            android:textOn="@string/kitchen" />
-
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ToggleButton
-                            android:id="@+id/ballroomButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#4DD0E1"
-                            android:textOff="@string/ballroom"
-                            android:textOn="@string/ballroom" />
-
-                        <ToggleButton
-                            android:id="@+id/gameroomButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#7986CB"
-                            android:textOff="@string/gameroom"
-                            android:textOn="@string/gameroom" />
-
-                        <ToggleButton
-                            android:id="@+id/gardenButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#4DB6AC"
-                            android:textOff="@string/garden"
-                            android:textOn="@string/garden" />
-                    </TableRow>
-
-                    <TableRow
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1">
-
-                        <ToggleButton
-                            android:id="@+id/libraryButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#BA68C8"
-                            android:textOff="@string/library"
-                            android:textOn="@string/library" />
-
-                        <ToggleButton
-                            android:id="@+id/loungeButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#F06292"
-                            android:textOff="@string/lounge"
-                            android:textOn="@string/lounge" />
-
-                        <ToggleButton
-                            android:id="@+id/studyButton"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1"
-                            android:background="#AED581"
-                            android:textOff="@string/study"
-                            android:textOn="@string/study" />
-
                     </TableRow>
 
                 </TableLayout>
