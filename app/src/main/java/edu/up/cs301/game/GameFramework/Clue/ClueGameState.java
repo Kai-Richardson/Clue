@@ -691,13 +691,26 @@ public class ClueGameState extends GameState implements Serializable
 
         whoseMove = 0;
         //predefine starting positions for two players
-        playerX = new int[2];
-        playerY = new int[2];
+        playerX = new int[6];
+        playerY = new int[6];
+        //blue
         playerX[0] = 0;
-        playerY[0] = 8;
-        playerX[1] = 24;
-        playerY[1] = 17;
-
+        playerY[0] = 5;
+        //purple
+        playerX[1] = 8;
+        playerY[1] = 0;
+        //white
+        playerX[2] = 24;
+        playerY[2] = 8;
+        //red
+        playerX[3] = 24;
+        playerY[3] = 18;
+        //green
+        playerX[4] = 17;
+        playerY[4] = 24;
+        //yellow
+        playerX[5] = 7;
+        playerY[5] = 24;
     }
 
     public ClueGameState(ClueGameState or) {

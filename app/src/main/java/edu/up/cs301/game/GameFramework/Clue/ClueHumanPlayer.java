@@ -391,7 +391,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		if (state != null) {
 			receiveInfo(state);
 		}
-		
 	}
 
 	//Converts Grid values to raw x,y coordinates to draw on
