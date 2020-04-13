@@ -236,22 +236,78 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				
 				//Room Side Buttons
 			case R.id.diningButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Dining", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Dining")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.hallButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Hall", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Hall")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.kitchenButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Kitchen", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Kitchen")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.ballroomButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Ballroom", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Ballroom")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.gameroomButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Gameroom", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Gameroom")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.gardenButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Garden", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Garden")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.libraryButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Library", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Library")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.loungeButton:
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Lounge", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Lounge")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 			case R.id.studyButton:
-
-				break;
+				if (chosenRoom == null) {
+					chosenRoom = new Card("Study", 2);
+					button.setAlpha(buttonActive);
+				} else if (chosenRoom.getName().equals("Study")) {
+					chosenRoom = null;
+					button.setAlpha(buttonInactive);
+				}
 		}
-
-		//Maybe use this to close:
-		// if confirm button
-		// call method on main activity then:
-		// getActivity().getFragmentManager().beginTransaction().remove(this).commit();
 
 	}
 }
