@@ -717,7 +717,10 @@ public class ClueGameState extends GameState implements Serializable
 
     }
 
-
+    public ArrayList<Card> getWinningCards()
+    {
+        return winningCards;
+    }
     public int getWhoseTurn()
     {
         return whoseMove;
