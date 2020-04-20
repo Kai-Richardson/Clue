@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,9 +64,73 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	/**
 	 * sets the counter value in the text view
 	 */
-	protected void updateDisplay()
-	{
+	protected void updateDisplay() {
 		// set the text in the appropriate widget
+	}
+
+	/**
+	 * Takes a canonical button name and converts it to a button reference
+	 *
+	 * @param buttonName canonical button name
+	 * @return button ref
+	 */
+	private Button stringToButton(String buttonName) {
+
+		switch (buttonName) {
+			case "scarlet":
+				return myActivity.findViewById(R.id.scarletButton);
+			case "peacock":
+				return myActivity.findViewById(R.id.peacockButton);
+			case "green":
+				return myActivity.findViewById(R.id.greenButton);
+			case "plum":
+				return myActivity.findViewById(R.id.plumButton);
+			case "white":
+				return myActivity.findViewById(R.id.whiteButton);
+			case "mustard":
+				return myActivity.findViewById(R.id.mustardButton);
+
+			case "knife":
+				return myActivity.findViewById(R.id.knifeButton);
+			case "revolver":
+				return myActivity.findViewById(R.id.revolverButton);
+			case "candlestick":
+				return myActivity.findViewById(R.id.candlestickButton);
+			case "leadpipe":
+				return myActivity.findViewById(R.id.leadpipeButton);
+			case "rope":
+				return myActivity.findViewById(R.id.ropeButton);
+			case "wrench":
+				return myActivity.findViewById(R.id.wrenchButton);
+
+			case "dining":
+				return myActivity.findViewById(R.id.diningButton);
+			case "hall":
+				return myActivity.findViewById(R.id.hallButton);
+			case "kitchen":
+				return myActivity.findViewById(R.id.kitchenButton);
+			case "ballroom":
+				return myActivity.findViewById(R.id.ballroomButton);
+			case "gameroom":
+				return myActivity.findViewById(R.id.gameroomButton);
+			case "garden":
+				return myActivity.findViewById(R.id.gardenButton);
+			case "library":
+				return myActivity.findViewById(R.id.libraryButton);
+			case "lounge":
+				return myActivity.findViewById(R.id.loungeButton);
+			case "study":
+				return myActivity.findViewById(R.id.studyButton);
+
+			default:
+				return null;
+		}
+	}
+
+	//Puts a crossout overlay on top of a button
+	private void crossoutButton(String name) {
+		Button ourButton = stringToButton(name);
+		ourButton.setForeground(ContextCompat.getDrawable(myActivity, R.drawable.cancel_trans));
 	}
 
 	/**
@@ -281,11 +346,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof ClueGameState))
-		{
+		if (!(info instanceof ClueGameState)) {
 			return;
-		}
-		else {
+		} else {
 			// update our state; then update the display
 			this.state = (ClueGameState) info;
 			updateDisplay();
@@ -389,11 +452,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ourCanvas = new Canvas(ourDrawingBitmap);
 
 		//need to parse incoming game state/action stuff in updateDisplay and do this drawing there
-		if(state != null)
-		{
-			drawPlayerAtGrid(Grid2Coord(state.getPlayerX(0)),Grid2Coord(state.getPlayerY(0)), "purple", ourCanvas);
-		}
-		else {
+		if (state != null) {
+			drawPlayerAtGrid(Grid2Coord(state.getPlayerX(0)), Grid2Coord(state.getPlayerY(0)), "purple", ourCanvas);
+		} else {
 			drawPlayerAtGrid(8, 0, "purple", ourCanvas);
 		}
 		drawPlayerAtGrid(0, 5, "blue", ourCanvas);
@@ -417,7 +478,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	/**
 	 * Loads a 'Fragment' - aka a popup View
-	 *
+	 * <p>
 	 * This fragment container will be part of the main view.
 	 */
 	public void loadFragment(Fragment frag, String tag) {
