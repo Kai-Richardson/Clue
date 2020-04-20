@@ -133,7 +133,7 @@ public class ClueLocalGame extends LocalGame
                 Log.d("Move", "move 4");
                 return false;
             }
-            if(currentSpot.getRoom().getName().equals(projectedMove.getRoom().getName()))
+	        if (currentSpot.getRoom().getName() != null && currentSpot.getRoom().getName().equals(projectedMove.getRoom().getName()))
             {
                 Log.d("Move", "moving in same room");
                 return false;
