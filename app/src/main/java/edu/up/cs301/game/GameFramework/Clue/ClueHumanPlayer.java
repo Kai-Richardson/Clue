@@ -3,6 +3,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
+import edu.up.cs301.game.GameFramework.actionMessage.EndTurnAction;
 import edu.up.cs301.game.GameFramework.infoMessage.IllegalMoveInfo;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
@@ -123,6 +124,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener{
 				break;
 			case R.id.cancelMoveButton:
 				attemptStateChange("cancelMove");
+				break;
+			case R.id.endTurnButton:
+				game.sendAction(new EndTurnAction(this));
 				break;
 
 			//Move Key Buttons

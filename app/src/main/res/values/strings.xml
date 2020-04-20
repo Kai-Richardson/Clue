@@ -16,4 +16,5 @@
     <string name="accuse">Accuse</string>
     <string name="board_image">Board Image</string>
     <string name="locationDisplayPrefix">\"Location: \"</string>
+    <string name="end_turn">End Turn</string>
 </resources>
