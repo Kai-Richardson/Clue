@@ -3,6 +3,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
+import edu.up.cs301.game.GameFramework.infoMessage.IllegalMoveInfo;
 import edu.up.cs301.game.R;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
@@ -61,8 +62,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	/**
 	 * sets the counter value in the text view
 	 */
-	protected void updateDisplay() {
-
+	protected void updateDisplay()
+	{
 		// set the text in the appropriate widget
 	}
 
@@ -172,6 +173,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		right.setClickable(true);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.VISIBLE);
+		display.setText("Moves Left" + state.getMovesLeft());
 		Button cancel = myActivity.findViewById(R.id.cancelMoveButton);
 		cancel.setVisibility(View.VISIBLE);
 		cancel.setClickable(true);
@@ -226,6 +228,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				break;
 			case "move":
 				game.sendAction(new ClueRollAction(this));
+				receiveInfo(state);
 				switchToMoveMode();
 				break;
 			case "cancelMove":
@@ -243,21 +246,25 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
 				game.sendAction(moveActionUp);
 				Log.d("move action", "up");
+				attemptStateChange("move");
 				break;
 			case "down":
 				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
 				game.sendAction(moveAction1Down);
 				Log.d("move action", "down");
+				attemptStateChange("move");
 				break;
 			case "left":
 				ClueMoveAction moveAction2 = new ClueMoveAction(this, 1);
 				game.sendAction(moveAction2);
 				Log.d("move action", "left");
+				attemptStateChange("move");
 				break;
 			case "right":
 				ClueMoveAction moveAction3 = new ClueMoveAction(this, 3);
 				game.sendAction(moveAction3);
 				Log.d("move action", "right");
+				attemptStateChange("move");
 				break;
 		}
 	}
@@ -270,11 +277,15 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	@Override
 	public void receiveInfo(GameInfo info) {
 		// ignore the message if it's not a CounterState message
-		if (!(info instanceof ClueGameState)) return;
-
-		// update our state; then update the display
-		this.state = (ClueGameState) info;
-		updateDisplay();
+		if (!(info instanceof ClueGameState))
+		{
+			return;
+		}
+		else {
+			// update our state; then update the display
+			this.state = (ClueGameState) info;
+			updateDisplay();
+		}
 	}
 
 	/**
