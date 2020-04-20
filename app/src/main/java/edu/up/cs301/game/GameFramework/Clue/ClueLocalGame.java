@@ -21,11 +21,11 @@ public class ClueLocalGame extends LocalGame
 
     public ClueLocalGame(int numPlayers)
     {
+        super();
         String[] str = new String[numPlayers];
         //this.gameState = new ClueGameState();
 	    gameState = new ClueGameState(numPlayers, str, 0);
     }
-
 
     @Override
     protected String checkIfGameOver()
@@ -139,6 +139,31 @@ public class ClueLocalGame extends LocalGame
                 gameState.setGameStage(3);
             }
             Log.d("Move", "Action complete");
+        }
+        if(action instanceof ClueAccuseAction) {
+            ClueAccuseAction aAction; //This variable needs to hold the user answer
+            boolean correct = true;
+            ArrayList<Card> wCards = gameState.getWinningCards();
+            for (int i = 0; i < wCards.size(); i++) {
+                if (wCards.get(i).getCardType() == 0) {
+                    if (!wCards.get(i).getName().equals(aAction.person)) {
+                        correct = false;
+                    }
+                }
+                if (wCards.get(i).getCardType() == 1) {
+                    if (!wCards.get(i).getName().equals(aAction.room)) {
+                        correct = false;
+                    }
+                }
+                if (wCards.get(i).getCardType() == 2) {
+                    if (!wCards.get(i).getName().equals(aAction.weapon)) {
+                        correct = false;
+                    }
+                }
+            }
+            if(!correct){
+                //make game over
+            }
         }
         return false; //filler
     }
