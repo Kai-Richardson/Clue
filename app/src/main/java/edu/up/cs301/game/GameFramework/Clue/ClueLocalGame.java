@@ -111,7 +111,7 @@ public class ClueLocalGame extends LocalGame
             }
             if(cma.getDirection() == 1)
             {
-                xMove--;
+                xMove++;
             }
             if(cma.getDirection() == 2)
             {
@@ -119,7 +119,7 @@ public class ClueLocalGame extends LocalGame
             }
             if(cma.getDirection() == 3)
             {
-                xMove++;
+                xMove--;
             }
 
             if(xMove > 24 || xMove < 0 || yMove > 24 || yMove < 0)
@@ -133,13 +133,21 @@ public class ClueLocalGame extends LocalGame
                 Log.d("Move", "move 4");
                 return false;
             }
+            boolean inRoom = false;
+            if(projectedMove.getRoom().getName() == null)
+            {
+                projectedMove.addPlayer();
+            }
+            else
+            {
+                inRoom = true;
+            }
             Log.d("Move", "The movement is valid");
             currentSpot.removePlayer();
-            projectedMove.addPlayer();
             gameState.setPlayerX(playerId, xMove);
             gameState.setPlayerY(playerId, yMove);
             gameState.decreaseMoves();
-            if(gameState.getMovesLeft() == 0)
+            if(gameState.getMovesLeft() == 0 || inRoom)
             {
                 //move to suggest or accuse
                 gameState.setGameStage(2);

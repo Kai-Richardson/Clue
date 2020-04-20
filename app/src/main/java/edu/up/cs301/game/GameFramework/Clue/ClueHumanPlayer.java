@@ -179,6 +179,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 			//Action Buttons
 			case R.id.moveButton:
+				game.sendAction(new ClueRollAction(this));
 				attemptStateChange("move");
 				break;
 			case R.id.suggestButton:
@@ -228,6 +229,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		Button accButton = myActivity.findViewById(R.id.acuseButton);
 		accButton.setVisibility(View.INVISIBLE);
 		accButton.setClickable(false);
+		Button endButton = myActivity.findViewById(R.id.endTurnButton);
+		endButton.setVisibility(View.INVISIBLE);
+		endButton.setClickable(false);
 
 		//Shows Move Buttons
 		Button up = myActivity.findViewById(R.id.buttonUp);
@@ -262,6 +266,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		Button accButton = myActivity.findViewById(R.id.acuseButton);
 		accButton.setVisibility(View.VISIBLE);
 		accButton.setClickable(true);
+		Button endButton = myActivity.findViewById(R.id.endTurnButton);
+		endButton.setVisibility(View.VISIBLE);
+		endButton.setClickable(true);
 
 		//Hides Move Buttons
 		Button up = myActivity.findViewById(R.id.buttonUp);
@@ -298,7 +305,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				loadFragment(suggestFragment, "fragmentSuggest");
 				break;
 			case "move":
-				game.sendAction(new ClueRollAction(this));
 				receiveInfo(state);
 				switchToMoveMode();
 				break;
