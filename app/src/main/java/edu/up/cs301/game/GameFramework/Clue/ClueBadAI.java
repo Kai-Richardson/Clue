@@ -2,6 +2,7 @@ package edu.up.cs301.game.GameFramework.Clue;
 
 import android.util.Log;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -106,6 +107,39 @@ public class ClueBadAI extends GameComputerPlayer {
             {
                 game.sendAction(new ClueEndTurnAction(this));
             }
+        }
+
+        //disproving
+        if(gs.getGameStage() == 3)
+        {
+            Card[] hand = gs.getHand(playerNum);
+            ArrayList<String> possibleCards = new ArrayList<String>();
+            int count = 0;
+            for(int i = 0; i < gs.getHandSize(); i++)
+            {
+                String cn = hand[i].getName();
+                //compare to suggested cards, if they are equal, then add them to an arraylist
+                if(cn.equals(gs.getSugPerson()))
+                {
+                    count++;
+                    possibleCards.add(cn);
+                }
+                if(cn.equals(gs.getSugWeapon()))
+                {
+                    count++;
+                    possibleCards.add(cn);
+                }
+                if(cn.equals(gs.getSugRoom()))
+                {
+                    count++;
+                    possibleCards.add(cn);
+                }
+            }
+            //choose one of the cards at random
+            Random r = new Random();
+            int chosenCard = r.nextInt(count);
+            String cardName = possibleCards.get(chosenCard);
+            game.sendAction(new ClueDisproveAction(this, cardName));
         }
     }
 }
