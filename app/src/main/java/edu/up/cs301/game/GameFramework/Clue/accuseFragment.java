@@ -47,7 +47,6 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
 	{
 		View myView = inflater.inflate(R.layout.clue_accuse_layout, container, false);
-
 		//Adds confirm/cancel buttons
 		Button cancelButtonAcc = myView.findViewById(R.id.cancelButtonAcc);
 		cancelButtonAcc.setOnClickListener(this);
