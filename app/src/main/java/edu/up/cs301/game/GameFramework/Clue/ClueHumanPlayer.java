@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
@@ -67,6 +68,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	 * literally does the drawing
 	 */
 	protected void updateDisplay() {
+
+		ourCanvas.drawColor(Color.TRANSPARENT, PorterDuff.Mode.CLEAR);
 
 		if (state == null) throw new RuntimeException();
 
