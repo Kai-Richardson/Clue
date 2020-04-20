@@ -187,6 +187,8 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:background="@drawable/char_scarlet"
+                        android:foreground="@drawable/cancel_trans"
+                        android:foregroundTintMode="src_over"
                         android:textOff="@string/space"
                         android:textOn="@string/space" />
 
