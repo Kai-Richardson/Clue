@@ -17,6 +17,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.AccuseView";
 
 	private Activity myActivity;
+	private GamePlayer p1;
 
 	private Card chosenCharacter = null;
 	private Card chosenWeapon = null;
@@ -136,7 +137,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonA:
-				//new ClueAccuseAction(a, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
+				new ClueAccuseAction(p1, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 
@@ -336,5 +337,9 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				break;
 		}
 
+	}
+
+	public void setPlayer(GamePlayer p1) {
+		this.p1 = p1;
 	}
 }

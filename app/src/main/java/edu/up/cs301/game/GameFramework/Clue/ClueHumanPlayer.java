@@ -310,6 +310,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		switch (type) {
 			case "accuse":
 				accuseFragment accuseFragment = new accuseFragment();
+				accuseFragment.setPlayer(this);
 				loadFragment(accuseFragment, "fragmentAccuse");
 				break;
 			case "suggest":
