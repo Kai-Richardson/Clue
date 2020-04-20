@@ -64,10 +64,19 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	}
 
 	/**
-	 * sets the counter value in the text view
+	 * literally does the drawing
 	 */
 	protected void updateDisplay() {
-		// set the text in the appropriate widget
+
+		if (state == null) throw new RuntimeException();
+
+		drawPlayerAtGrid(state.getPlayerX(0), state.getPlayerY(0), "purple", ourCanvas);
+		drawPlayerAtGrid(state.getPlayerX(1), state.getPlayerY(1), "blue", ourCanvas);
+		drawPlayerAtGrid(state.getPlayerX(2), state.getPlayerY(2), "white", ourCanvas);
+		drawPlayerAtGrid(state.getPlayerX(3), state.getPlayerY(3), "red", ourCanvas);
+		drawPlayerAtGrid(state.getPlayerX(4), state.getPlayerY(4), "green", ourCanvas);
+		drawPlayerAtGrid(state.getPlayerX(5), state.getPlayerY(5), "yellow", ourCanvas);
+
 	}
 
 	/**
@@ -459,18 +468,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
 		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
 		ourCanvas = new Canvas(ourDrawingBitmap);
-
-		//need to parse incoming game state/action stuff in updateDisplay and do this drawing there
-		if (state != null) {
-			drawPlayerAtGrid(Grid2Coord(state.getPlayerX(0)), Grid2Coord(state.getPlayerY(0)), "purple", ourCanvas);
-		} else {
-			drawPlayerAtGrid(8, 0, "purple", ourCanvas);
-		}
-		drawPlayerAtGrid(0, 5, "blue", ourCanvas);
-		drawPlayerAtGrid(7, 24, "yellow", ourCanvas);
-		drawPlayerAtGrid(17, 24, "green", ourCanvas);
-		drawPlayerAtGrid(24, 18, "red", ourCanvas);
-		drawPlayerAtGrid(24, 8, "white", ourCanvas);
 
 		ourDrawingImageView.setImageBitmap(ourDrawingBitmap);
 		//
