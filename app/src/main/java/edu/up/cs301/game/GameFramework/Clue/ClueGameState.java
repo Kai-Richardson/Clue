@@ -694,9 +694,9 @@ public class ClueGameState extends GameState implements Serializable
         playerX = new int[2];
         playerY = new int[2];
         playerX[0] = 0;
-        playerY[0] = 8;
+        playerY[0] = 5;
         playerX[1] = 24;
-        playerY[1] = 17;
+        playerY[1] = 18;
 
     }
 

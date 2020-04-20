@@ -456,6 +456,15 @@
                     android:backgroundTint="#EF9A9A"
                     android:text="@string/accuse"
                     android:visibility="visible" />
+
+                <Button
+                    android:id="@+id/endTurnButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#393939"
+                    android:text="@string/end_turn"
+                    android:textColor="#FFFFFF"
+                    android:visibility="visible" />
             </LinearLayout>
 
         </LinearLayout>
