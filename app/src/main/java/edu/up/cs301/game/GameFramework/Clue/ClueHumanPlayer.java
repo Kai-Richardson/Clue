@@ -312,6 +312,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				break;
 			case "suggest":
 				suggestFragment suggestFragment = new suggestFragment();
+				suggestFragment.setPlayer(this);
 				loadFragment(suggestFragment, "fragmentSuggest");
 				break;
 			case "move":

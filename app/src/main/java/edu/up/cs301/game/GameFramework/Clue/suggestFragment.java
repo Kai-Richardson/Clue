@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.R;
 
 public class suggestFragment extends Fragment implements View.OnClickListener
@@ -18,6 +19,7 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.SuggestView";
 
 	private Activity myActivity;
+	private GamePlayer p1;
 
 	private Card chosenCharacter = null;
 	private Card chosenWeapon = null;
@@ -222,5 +224,9 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 				break;
 		}
 
+	}
+
+	public void setPlayer(GamePlayer p1) {
+		this.p1 = p1;
 	}
 }
