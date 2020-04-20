@@ -19,6 +19,7 @@ public class ClueGameState extends GameState implements Serializable
     private String sugWeapon;
     private String sugRoom;
     private String sugPerson;
+    private String disproveCard;
     private int moves;
     private int whoseMove;
     private int[] playerX;
@@ -723,12 +724,13 @@ public class ClueGameState extends GameState implements Serializable
         sugPerson = null;
         sugRoom = null;
         sugWeapon = null;
+        disproveCard = null;
     }
 
     public ClueGameState(ClueGameState or) {
-        sugPerson = null;
-        sugRoom = null;
-        sugWeapon = null;
+        sugPerson = or.sugPerson;
+        sugRoom = or.sugRoom;
+        sugWeapon = or.sugWeapon;
         //if other variables are added, they need to be added here too
         gameStage = or.gameStage;
         board = or.board;
@@ -745,12 +747,23 @@ public class ClueGameState extends GameState implements Serializable
         suggestTurn = (or.whoseMove + 1) % 6;
 
         numPlayers = or.numPlayers;
+        disproveCard = or.disproveCard;
 
     }
 
     public ArrayList<Card> getWinningCards()
     {
         return winningCards;
+    }
+
+    public String getDisproveCard()
+    {
+        return disproveCard;
+    }
+
+    public void setDisproveCard(String str)
+    {
+        disproveCard = str;
     }
 
     public int getWhoseTurn()
@@ -761,9 +774,14 @@ public class ClueGameState extends GameState implements Serializable
     public void setWhoseTurn()
     {
         whoseMove = whoseMove++;
-        if(whoseMove >= 6)
+        if(whoseMove >= numPlayers)
         {
             whoseMove = 0;
+        }
+        suggestTurn = whoseMove+1;
+        if(suggestTurn >= numPlayers)
+        {
+            suggestTurn = 0;
         }
     }
 
@@ -816,9 +834,13 @@ public class ClueGameState extends GameState implements Serializable
         return suggestTurn;
     }
 
-    public void setSuggestTurn(int i)
+    public void setSuggestTurn()
     {
-        suggestTurn = i;
+        suggestTurn++;
+        if(suggestTurn >= numPlayers)
+        {
+            suggestTurn = 0;
+        }
     }
 
     public void setSugWeapon(String i)

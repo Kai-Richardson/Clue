@@ -44,6 +44,11 @@ public class ClueLocalGame extends LocalGame
         return pl == gameState.getWhoseTurn();
     }
 
+    protected boolean canDisprove(int pl)
+    {
+        return pl == gameState.getSuggestTurn();
+    }
+
     @Override
     protected boolean makeMove(GameAction action)
     {
@@ -206,6 +211,37 @@ public class ClueLocalGame extends LocalGame
             gameState.setGameStage(3);
             return true;
         }
+
+        //disprove action checks
+        if(action instanceof ClueDisproveAction)
+        {
+            ClueDisproveAction da = (ClueDisproveAction) action;
+            int playerId = getPlayerIdx(da.getPlayer());
+            if(!(canDisprove(playerId)))
+            {
+                Log.d("disprove", "break 1");
+                return false;
+            }
+            if(canMove(playerId))
+            {
+                Log.d("disprove", "break 2, disprove own suggest");
+                gameState.setGameStage(4);
+                return true;
+            }
+            if(da.getName() == null)
+            {
+                Log.d("disprove", "break 2, no return");
+                gameState.setSuggestTurn();
+            }
+            else
+            {
+                Log.d("disprove", "updated");
+                gameState.setDisproveCard(da.getName());
+                gameState.setGameStage(4);
+                return true;
+            }
+        }
+
 
         if(action instanceof ClueEndTurnAction)
         {

@@ -6,12 +6,15 @@ import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 public class ClueDisproveAction extends GameAction
 {
     String name;
-    public ClueDisproveAction(GamePlayer pl, String playerName)
+
+    public ClueDisproveAction(GamePlayer pl, String cardName)
     {
         super(pl);
-        name = playerName;
+        name = cardName;
     }
-    public String getName(){
+
+    public String getName()
+    {
         return name;
     }
 }
