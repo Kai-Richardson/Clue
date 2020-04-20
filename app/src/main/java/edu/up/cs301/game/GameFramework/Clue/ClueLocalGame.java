@@ -14,7 +14,6 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
 public class ClueLocalGame extends LocalGame
 {
-    //private Player whoseTurn;
     private int movesLeft;
 
     private ClueGameState gameState;
@@ -50,6 +49,12 @@ public class ClueLocalGame extends LocalGame
     {
         //this method checks which state of the game we are in, and if a certain move can be made then
         //updated the gameState if the move was valid, and returns false, else returns false
+        //game stages -
+        //0 - roll/passageway
+        //1 - move
+        //2 - suggest / accuse
+        //3 - disprove
+        //4  - turn over (need to confirm turn over)
         if(action instanceof ClueRollAction)
         {
             ClueRollAction cra = (ClueRollAction)action;
@@ -131,38 +136,86 @@ public class ClueLocalGame extends LocalGame
             gameState.decreaseMoves();
             if(gameState.getMovesLeft() == 0)
             {
-                //move to accuse stage
-                gameState.setGameStage(4);
-            }
-            if(projectedMove.getRoom().getName() != null)
-            {
-                gameState.setGameStage(3);
+                //move to suggest or accuse
+                gameState.setGameStage(2);
             }
             Log.d("Move", "Action complete");
         }
+
         if(action instanceof ClueAccuseAction) {
-            ClueAccuseAction aAction; //This variable needs to hold the user answer
+            ClueAccuseAction aAction = (ClueAccuseAction)action; //This variable needs to hold the user answer
             boolean correct = true;
+            int playerId = getPlayerIdx(aAction.getPlayer());
+            if(!(canMove(playerId)))
+            {
+                Log.d("accuse", "break 1");
+                return false;
+            }
+            if(gameState.getGameStage() != 2)
+            {
+                Log.d("accuse", "break 2");
+                return false;
+            }
             ArrayList<Card> wCards = gameState.getWinningCards();
             for (int i = 0; i < wCards.size(); i++) {
                 if (wCards.get(i).getCardType() == 0) {
-                    if (!wCards.get(i).getName().equals(aAction.person)) {
+                    if (!wCards.get(i).getName().equals(aAction.getPerson())) {
                         correct = false;
                     }
                 }
                 if (wCards.get(i).getCardType() == 1) {
-                    if (!wCards.get(i).getName().equals(aAction.room)) {
+                    if (!wCards.get(i).getName().equals(aAction.getRoom())) {
                         correct = false;
                     }
                 }
                 if (wCards.get(i).getCardType() == 2) {
-                    if (!wCards.get(i).getName().equals(aAction.weapon)) {
+                    if (!wCards.get(i).getName().equals(aAction.getWeapon())) {
                         correct = false;
                     }
                 }
             }
             if(!correct){
                 //make game over
+            }
+            else
+            {
+                gameState.setGameStage(4);
+            }
+        }
+
+        if(action instanceof ClueSuggestAction)
+        {
+            ClueSuggestAction csa = (ClueSuggestAction)action;
+            int playerId = getPlayerIdx(csa.getPlayer());
+            if(!canMove(playerId))
+            {
+                Log.d("endturn", "break 1");
+                return false;
+            }
+            if(gameState.getGameStage() != 3)
+            {
+                Log.d("disprove", "break 2");
+                return false;
+            }
+            gameState.setSugPerson(csa.getPerson());
+            gameState.setSugRoom(csa.getRoom());
+            gameState.setSugWeapon(csa.getWeapon());
+            gameState.setGameStage(3);
+        }
+
+        if(action instanceof ClueEndTurnAction)
+        {
+            ClueEndTurnAction eta = (ClueEndTurnAction)action;
+            int playerId = getPlayerIdx(eta.getPlayer());
+            if(!(canMove(playerId)))
+            {
+                Log.d("endturn", "break 1");
+                return false;
+            }
+            else
+            {
+                gameState.setGameStage(0);
+                gameState.setWhoseTurn();
             }
         }
         return false; //filler

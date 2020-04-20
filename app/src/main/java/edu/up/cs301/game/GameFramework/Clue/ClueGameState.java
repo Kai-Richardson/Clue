@@ -15,13 +15,17 @@ public class ClueGameState extends GameState implements Serializable
 
     private int gameStage;
     private TileData[][] board = new TileData[25][25];
-    private Card[] suggestedCards;
+    private String sugWeapon;
+    private String sugRoom;
+    private String sugPerson;
     private int moves;
     private int whoseMove;
     private int[] playerX;
     private int[] playerY;
     private ArrayList<Card> deck = new ArrayList<Card>();
     private ArrayList<Card> winningCards = new ArrayList<Card>();
+
+    private int suggestTurn;
 
     private int handSize;
     private Card[][] playerHands;
@@ -711,10 +715,17 @@ public class ClueGameState extends GameState implements Serializable
         //yellow
         playerX[5] = 7;
         playerY[5] = 24;
+
+        suggestTurn = 1;
+        sugPerson = null;
+        sugRoom = null;
+        sugWeapon = null;
     }
 
     public ClueGameState(ClueGameState or) {
-        suggestedCards = or.suggestedCards;
+        sugPerson = null;
+        sugRoom = null;
+        sugWeapon = null;
         //if other variables are added, they need to be added here too
         gameStage = or.gameStage;
         board = or.board;
@@ -728,15 +739,27 @@ public class ClueGameState extends GameState implements Serializable
         handSize = or.handSize;
         playerHands = or.playerHands;
 
+        suggestTurn = (or.whoseMove + 1) % 6;
+
     }
 
     public ArrayList<Card> getWinningCards()
     {
         return winningCards;
     }
+
     public int getWhoseTurn()
     {
         return whoseMove;
+    }
+
+    public void setWhoseTurn()
+    {
+        whoseMove = whoseMove++;
+        if(whoseMove >= 6)
+        {
+            whoseMove = 0;
+        }
     }
 
     public int getMovesLeft()
@@ -781,5 +804,45 @@ public class ClueGameState extends GameState implements Serializable
     public void setPlayerY(int i, int j)
     {
         playerY[i] = j;
+    }
+
+    public int getSuggestTurn()
+    {
+        return suggestTurn;
+    }
+
+    public void setSuggestTurn(int i)
+    {
+        suggestTurn = i;
+    }
+
+    public void setSugWeapon(String i)
+    {
+        sugWeapon = i;
+    }
+
+    public String getSugWeapon()
+    {
+        return sugWeapon;
+    }
+
+    public void setSugPerson(String i)
+    {
+        sugPerson = i;
+    }
+
+    public String getSugPerson()
+    {
+        return sugPerson;
+    }
+
+    public void setSugRoom(String i)
+    {
+        sugRoom = i;
+    }
+
+    public String getSugRoom()
+    {
+        return sugRoom;
     }
 }
