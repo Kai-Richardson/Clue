@@ -140,6 +140,7 @@ public class ClueLocalGame extends LocalGame
                 gameState.setGameStage(2);
             }
             Log.d("Move", "Action complete");
+            return true;
         }
 
         if(action instanceof ClueAccuseAction) {
@@ -176,10 +177,12 @@ public class ClueLocalGame extends LocalGame
             }
             if(!correct){
                 //make game over
+                return true;
             }
             else
             {
                 gameState.setGameStage(4);
+                return true;
             }
         }
 
@@ -201,6 +204,7 @@ public class ClueLocalGame extends LocalGame
             gameState.setSugRoom(csa.getRoom());
             gameState.setSugWeapon(csa.getWeapon());
             gameState.setGameStage(3);
+            return true;
         }
 
         if(action instanceof ClueEndTurnAction)
@@ -216,6 +220,7 @@ public class ClueLocalGame extends LocalGame
             {
                 gameState.setGameStage(0);
                 gameState.setWhoseTurn();
+                return true;
             }
         }
         return false; //filler
