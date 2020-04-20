@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
+import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.R;
 
 public class accuseFragment extends Fragment implements View.OnClickListener
@@ -135,7 +136,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonA:
-				//new ClueAccuseAction(getChosenCharacter(), getChosenWeapon(), getChosenRoom());
+				//new ClueAccuseAction(a, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 

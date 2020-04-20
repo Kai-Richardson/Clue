@@ -14,6 +14,7 @@ public class ClueGameState extends GameState implements Serializable
 {
 
     private int gameStage;
+    private int numPlayers;
     private TileData[][] board = new TileData[25][25];
     private String sugWeapon;
     private String sugRoom;
@@ -39,7 +40,7 @@ public class ClueGameState extends GameState implements Serializable
 
     public ClueGameState(int numPlayers, String[] playerName, int turnID)
     {
-
+        this.numPlayers = numPlayers;
         //make deck
         deck.add(new Card("wrench", 2));
         deck.add(new Card("candlestick", 2));
@@ -93,10 +94,12 @@ public class ClueGameState extends GameState implements Serializable
                 break;
             }
         }
-        playerHands = new Card[deck.size()/2][2];
+
         handSize = deck.size()/numPlayers;
-        for(int i = 0; i < handSize; i++) {
-            for (int j = 0; j < numPlayers; j++) {
+        playerHands = new Card[numPlayers][handSize];
+
+        for(int i = 0; i < numPlayers; i++) {
+            for (int j = 0; j < handSize; j++) {
                 playerHands[i][j] = deck.get(0);
                 deck.remove(0);
             }
@@ -741,6 +744,8 @@ public class ClueGameState extends GameState implements Serializable
 
         suggestTurn = (or.whoseMove + 1) % 6;
 
+        numPlayers = or.numPlayers;
+
     }
 
     public ArrayList<Card> getWinningCards()
@@ -844,5 +849,20 @@ public class ClueGameState extends GameState implements Serializable
     public String getSugRoom()
     {
         return sugRoom;
+    }
+
+    public Card[] getHand(int id)
+    {
+        Card[] hand = new Card[handSize];
+        for(int i = 0; i < handSize; i++)
+        {
+            hand[i] = playerHands[id][i];
+        }
+        return hand;
+    }
+
+    public int getHandSize()
+    {
+        return handSize;
     }
 }

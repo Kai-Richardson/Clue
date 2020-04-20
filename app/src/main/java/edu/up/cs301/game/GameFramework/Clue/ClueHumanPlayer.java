@@ -16,6 +16,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.view.View;
@@ -41,6 +42,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	private ImageView ourDrawingImageView;
 	private Bitmap ourDrawingBitmap;
 	private Canvas ourCanvas;
+	private Bundle bundle;
 
 	/**
 	 * constructor
@@ -324,13 +326,13 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				attemptStateChange("move");
 				break;
 			case "left":
-				ClueMoveAction moveAction2 = new ClueMoveAction(this, 1);
+				ClueMoveAction moveAction2 = new ClueMoveAction(this, 3);
 				game.sendAction(moveAction2);
 				Log.d("move action", "left");
 				attemptStateChange("move");
 				break;
 			case "right":
-				ClueMoveAction moveAction3 = new ClueMoveAction(this, 3);
+				ClueMoveAction moveAction3 = new ClueMoveAction(this, 1);
 				game.sendAction(moveAction3);
 				Log.d("move action", "right");
 				attemptStateChange("move");
