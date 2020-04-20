@@ -23,7 +23,7 @@ public class ClueLocalGame extends LocalGame
         super();
         String[] str = new String[numPlayers];
         //this.gameState = new ClueGameState();
-	    gameState = new ClueGameState(numPlayers, str, 0);
+	    this.gameState = new ClueGameState(numPlayers, str, 0);
     }
 
     @Override
@@ -256,19 +256,6 @@ public class ClueLocalGame extends LocalGame
     {
         return false;
     }
-
-    public boolean checkAccusation(Card[] cd)
-    {
-        int correct = 0;
-        for(Card card: cd){
-            //if(card == winningCards.get(0) || card == winningCards.get(1) || card == winningCards.get(2)){
-           //     correct++;
-            //}
-            if(correct == 3){
-                return true;
-            }
-        }
-        return false;
-    }
+    
 
 }
