@@ -103,8 +103,6 @@
                         android:layout_weight="1"
                         android:background="#3AB6C6"
                         android:clickable="false"
-                        android:textOff="Moves: 4"
-                        android:textOn="Moves: 4"
                         android:textSize="18sp"
                         android:visibility="invisible"
                         tools:ignore="HardcodedText" />

@@ -260,7 +260,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		right.setClickable(true);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.VISIBLE);
-		display.setText("Moves Left" + state.getMovesLeft());
+		display.setText("Moves Left: " + state.getMovesLeft());
 		Button cancel = myActivity.findViewById(R.id.cancelMoveButton);
 		cancel.setVisibility(View.VISIBLE);
 		cancel.setClickable(true);
@@ -469,7 +469,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		leftArrow.setOnClickListener(this);
 		ToggleButton cancelButton = myActivity.findViewById(R.id.cancelMoveButton);
 		cancelButton.setOnClickListener(this);
-
 
 		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
 		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
