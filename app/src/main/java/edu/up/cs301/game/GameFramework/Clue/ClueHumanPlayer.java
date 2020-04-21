@@ -80,6 +80,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		drawPlayerAtGrid(state.getPlayerX(4), state.getPlayerY(4), "green", ourCanvas);
 		drawPlayerAtGrid(state.getPlayerX(5), state.getPlayerY(5), "yellow", ourCanvas);
 
+
 	}
 
 	/**
@@ -204,7 +205,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				attemptStateChange("cancelMove");
 				break;
 			case R.id.endTurnButton:
-				game.sendAction(new EndTurnAction(this));
+				game.sendAction(new ClueEndTurnAction(this));
 				break;
 
 			//Move Key Buttons
@@ -230,7 +231,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	//Hides state buttons and shows move interface
 	public void switchToMoveMode() {
-		receiveInfo(state);
 		//Hides State Buttons
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setVisibility(View.INVISIBLE);
@@ -337,25 +337,25 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
 				game.sendAction(moveActionUp);
 				Log.d("move action", "up");
-				attemptStateChange("move");
+                switchToMoveMode();
 				break;
 			case "down":
 				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
 				game.sendAction(moveAction1Down);
 				Log.d("move action", "down");
-				attemptStateChange("move");
+                switchToMoveMode();
 				break;
 			case "left":
 				ClueMoveAction moveAction2 = new ClueMoveAction(this, 3);
 				game.sendAction(moveAction2);
 				Log.d("move action", "left");
-				attemptStateChange("move");
+                switchToMoveMode();
 				break;
 			case "right":
 				ClueMoveAction moveAction3 = new ClueMoveAction(this, 1);
 				game.sendAction(moveAction3);
 				Log.d("move action", "right");
-				attemptStateChange("move");
+				switchToMoveMode();
 				break;
 		}
 	}
@@ -407,6 +407,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		//Setup move state switch button
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setOnClickListener(this);
+		Button endButton = myActivity.findViewById(R.id.endTurnButton);
+		endButton.setOnClickListener(this);
 
 		//Character Side Buttons
 		ToggleButton scarletButton = myActivity.findViewById(R.id.scarletButton);

@@ -744,7 +744,7 @@ public class ClueGameState extends GameState implements Serializable
         handSize = or.handSize;
         playerHands = or.playerHands;
 
-        suggestTurn = (or.whoseMove + 1) % 6;
+        suggestTurn = or.suggestTurn;
 
         numPlayers = or.numPlayers;
         disproveCard = or.disproveCard;
@@ -773,15 +773,10 @@ public class ClueGameState extends GameState implements Serializable
 
     public void setWhoseTurn()
     {
-        whoseMove = whoseMove++;
+        whoseMove = whoseMove + 1;
         if(whoseMove >= numPlayers)
         {
             whoseMove = 0;
-        }
-        suggestTurn = whoseMove+1;
-        if(suggestTurn >= numPlayers)
-        {
-            suggestTurn = 0;
         }
     }
 

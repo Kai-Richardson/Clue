@@ -78,6 +78,7 @@ public class ClueLocalGame extends LocalGame
             Log.d("roll result", "the result in state is" + gameState.getMovesLeft());
             gameState.setRollResult(cra.getResult());
             gameState.setGameStage(1);
+            sendUpdatedStateTo(cra.getPlayer());
             return true;
 
         }
@@ -155,9 +156,10 @@ public class ClueLocalGame extends LocalGame
             if(gameState.getMovesLeft() == 0 || inRoom)
             {
                 //move to suggest or accuse
-                gameState.setGameStage(2);
+                gameState.setGameStage(4); // FIX THIS LATER
             }
             Log.d("Move", "Action complete");
+            sendUpdatedStateTo(cma.getPlayer());
             return true;
         }
 
@@ -193,13 +195,14 @@ public class ClueLocalGame extends LocalGame
                     }
                 }
             }
-            if(!correct){
+            if(correct){
                 //make game over
                 return true;
             }
             else
             {
                 gameState.setGameStage(4);
+                sendUpdatedStateTo(aAction.getPlayer());
                 return true;
             }
         }
@@ -222,6 +225,7 @@ public class ClueLocalGame extends LocalGame
             gameState.setSugRoom(csa.getRoom());
             gameState.setSugWeapon(csa.getWeapon());
             gameState.setGameStage(3);
+            sendUpdatedStateTo(csa.getPlayer());
             return true;
         }
 
@@ -239,6 +243,7 @@ public class ClueLocalGame extends LocalGame
             {
                 Log.d("disprove", "break 2, disprove own suggest");
                 gameState.setGameStage(4);
+                sendUpdatedStateTo(da.getPlayer());
                 return true;
             }
             if(da.getName() == null)
@@ -251,6 +256,7 @@ public class ClueLocalGame extends LocalGame
                 Log.d("disprove", "updated");
                 gameState.setDisproveCard(da.getName());
                 gameState.setGameStage(4);
+                sendUpdatedStateTo(da.getPlayer());
                 return true;
             }
         }
@@ -269,6 +275,7 @@ public class ClueLocalGame extends LocalGame
             {
                 gameState.setGameStage(0);
                 gameState.setWhoseTurn();
+                sendUpdatedStateTo(eta.getPlayer());
                 return true;
             }
         }

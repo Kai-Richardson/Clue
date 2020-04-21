@@ -44,8 +44,6 @@ public class ClueMainActivity extends GameMainActivity
         defaultConfig.addPlayer("Human", 0);
         defaultConfig.addPlayer("Bad AI", 1);
 
-        defaultConfig.setRemoteData("Remote Player", "", 0);
-
         return defaultConfig;
 
     }

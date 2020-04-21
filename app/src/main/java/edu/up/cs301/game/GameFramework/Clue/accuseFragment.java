@@ -137,7 +137,14 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonA:
-				new ClueAccuseAction(p1, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
+				try
+				{
+					new ClueAccuseAction(p1, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
+				}
+				catch(Exception e)
+				{
+
+				}
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 

@@ -63,29 +63,16 @@ public class ClueBadAI extends GameComputerPlayer {
         }
 
         //move phase
-        if(gs.getGameStage() == 1)
+        else if(gs.getGameStage() == 1)
         {
-            boolean canMove = true;
-            //keep looping until moves are up
-            while(canMove)
-            {
-                int movesLeft = gs.getMovesLeft();
-                if(movesLeft == 0)
-                {
-                    canMove = false;
-                }
-                else
-                    {
-                    //randomly choose a direction
-                    Random r = new Random();
-                    int direction = r.nextInt(4);
-                    game.sendAction(new ClueMoveAction(this, direction));
-                }
-            }
+            //randomly choose a direction
+            Random r = new Random();
+            int direction = r.nextInt(4);
+            game.sendAction(new ClueMoveAction(this, direction));
         }
 
         //accuse / suggest phase
-        if(gs.getGameStage() == 2)
+        else if(gs.getGameStage() == 2)
         {
             TileData td = gs.getTileDataAtCoord(gs.getPlayerX(playerNum), gs.getPlayerY(playerNum));
             if(turnCount == 10)
@@ -108,9 +95,8 @@ public class ClueBadAI extends GameComputerPlayer {
                 game.sendAction(new ClueEndTurnAction(this));
             }
         }
-
         //disproving
-        if(gs.getGameStage() == 3)
+        else if(gs.getGameStage() == 3)
         {
             Card[] hand = gs.getHand(playerNum);
             ArrayList<String> possibleCards = new ArrayList<String>();
@@ -141,5 +127,15 @@ public class ClueBadAI extends GameComputerPlayer {
             String cardName = possibleCards.get(chosenCard);
             game.sendAction(new ClueDisproveAction(this, cardName));
         }
+        else
+        {
+            game.sendAction(new ClueEndTurnAction(this));
+        }
+    }
+
+    @Override
+    protected void timerTicked()
+    {
+
     }
 }
