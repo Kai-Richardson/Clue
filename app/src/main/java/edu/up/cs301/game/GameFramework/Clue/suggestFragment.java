@@ -107,7 +107,9 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonS:
-				new ClueSuggestAction(p1, chosenCharacter.getName(), chosenWeapon.getName(), chosenRoom.getName());
+				if(chosenCharacter != null && chosenWeapon != null && chosenRoom != null) {
+					new ClueSuggestAction(p1, chosenCharacter.getName(), chosenWeapon.getName(), chosenRoom.getName());
+				}
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 
