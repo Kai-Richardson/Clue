@@ -204,7 +204,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				attemptStateChange("cancelMove");
 				break;
 			case R.id.endTurnButton:
-				game.sendAction(new EndTurnAction(this));
+				game.sendAction(new ClueEndTurnAction(this));
 				break;
 
 			//Move Key Buttons
@@ -407,6 +407,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		//Setup move state switch button
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setOnClickListener(this);
+		Button endButton = myActivity.findViewById(R.id.endTurnButton);
+		endButton.setOnClickListener(this);
 
 		//Character Side Buttons
 		ToggleButton scarletButton = myActivity.findViewById(R.id.scarletButton);
