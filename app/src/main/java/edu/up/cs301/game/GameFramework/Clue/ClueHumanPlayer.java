@@ -1,14 +1,5 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
-import edu.up.cs301.game.GameFramework.GameHumanPlayer;
-import edu.up.cs301.game.GameFramework.GameMainActivity;
-import edu.up.cs301.game.GameFramework.GamePlayer;
-import edu.up.cs301.game.GameFramework.actionMessage.EndTurnAction;
-import edu.up.cs301.game.GameFramework.infoMessage.IllegalMoveInfo;
-import edu.up.cs301.game.R;
-import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
-import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
-
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
@@ -25,6 +16,13 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ToggleButton;
+
+import edu.up.cs301.game.GameFramework.GameHumanPlayer;
+import edu.up.cs301.game.GameFramework.GameMainActivity;
+import edu.up.cs301.game.GameFramework.actionMessage.EndTurnAction;
+import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
+import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
+import edu.up.cs301.game.R;
 
 
 public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener {
@@ -80,6 +78,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		drawPlayerAtGrid(state.getPlayerX(4), state.getPlayerY(4), "green", ourCanvas);
 		drawPlayerAtGrid(state.getPlayerX(5), state.getPlayerY(5), "yellow", ourCanvas);
 
+		getTopView().invalidate();
 
 	}
 
@@ -205,7 +204,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				attemptStateChange("cancelMove");
 				break;
 			case R.id.endTurnButton:
-				game.sendAction(new ClueEndTurnAction(this));
+				game.sendAction(new EndTurnAction(this));
 				break;
 
 			//Move Key Buttons
@@ -231,6 +230,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	//Hides state buttons and shows move interface
 	public void switchToMoveMode() {
+		receiveInfo(state);
 		//Hides State Buttons
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setVisibility(View.INVISIBLE);
@@ -337,25 +337,25 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
 				game.sendAction(moveActionUp);
 				Log.d("move action", "up");
-                switchToMoveMode();
+				attemptStateChange("move");
 				break;
 			case "down":
 				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
 				game.sendAction(moveAction1Down);
 				Log.d("move action", "down");
-                switchToMoveMode();
+				attemptStateChange("move");
 				break;
 			case "left":
 				ClueMoveAction moveAction2 = new ClueMoveAction(this, 3);
 				game.sendAction(moveAction2);
 				Log.d("move action", "left");
-                switchToMoveMode();
+				attemptStateChange("move");
 				break;
 			case "right":
 				ClueMoveAction moveAction3 = new ClueMoveAction(this, 1);
 				game.sendAction(moveAction3);
 				Log.d("move action", "right");
-				switchToMoveMode();
+				attemptStateChange("move");
 				break;
 		}
 	}
@@ -407,8 +407,6 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		//Setup move state switch button
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
 		moveButton.setOnClickListener(this);
-		Button endButton = myActivity.findViewById(R.id.endTurnButton);
-		endButton.setOnClickListener(this);
 
 		//Character Side Buttons
 		ToggleButton scarletButton = myActivity.findViewById(R.id.scarletButton);
