@@ -9,6 +9,8 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.R;
 
@@ -17,7 +19,7 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.AccuseView";
 
 	private Activity myActivity;
-	private GamePlayer p1;
+	private ClueHumanPlayer myPlayer;
 
 	private Card chosenCharacter = null;
 	private Card chosenWeapon = null;
@@ -137,14 +139,10 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonA:
-				try
-				{
-					new ClueAccuseAction(p1, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
-				}
-				catch(Exception e)
-				{
-
-				}
+				if (Objects.isNull(chosenCharacter) || Objects.isNull(chosenRoom) || Objects.isNull(chosenWeapon))
+					break;
+				ClueAccuseAction myAccAct = new ClueAccuseAction(myPlayer, chosenWeapon.getName(), chosenRoom.getName(), chosenCharacter.getName());
+				myPlayer.sendFragAct(myAccAct);
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 
@@ -346,7 +344,12 @@ public class accuseFragment extends Fragment implements View.OnClickListener
 
 	}
 
-	public void setPlayer(GamePlayer p1) {
-		this.p1 = p1;
+	/**
+	 * Sets the human player associated with this fragment.
+	 *
+	 * @param player ref to player
+	 */
+	public void setPlayer(ClueHumanPlayer player) {
+		myPlayer = player;
 	}
 }

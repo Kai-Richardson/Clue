@@ -166,6 +166,15 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	}
 
 	/**
+	 * Allows for sending actions from fragments
+	 *
+	 * @param act - a GameAction to send
+	 */
+	protected void sendFragAct(GameAction act) {
+		game.sendAction(act);
+	}
+
+	/**
 	 * This method is called when a button is clicked.
 	 * This is primarily used for the interactive notepad.
 	 *
