@@ -137,11 +137,12 @@
                         android:visibility="invisible" />
 
                     <ToggleButton
-                        android:id="@+id/dummy21"
+                        android:id="@+id/passagewayButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:visibility="invisible" />
+                        android:visibility="invisible"
+                        tools:text='"Passageway"' />
 
                 </TableRow>
 

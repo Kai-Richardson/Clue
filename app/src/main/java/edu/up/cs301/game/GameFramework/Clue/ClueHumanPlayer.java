@@ -220,6 +220,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 			case R.id.buttonRight:
 				attemptMove("right");
 				break;
+			case R.id.passagewayButton:
+				game.sendAction(new CluePassageAction(this, state.getTileDataAtCoord(state.getPlayerX(playerNum), state.getPlayerY(playerNum)).getRoom()));
+				break;
 		}
 
 
@@ -258,6 +261,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		Button right = myActivity.findViewById(R.id.buttonRight);
 		right.setVisibility(View.VISIBLE);
 		right.setClickable(true);
+		Button passage = myActivity.findViewById(R.id.passagewayButton);
+		passage.setVisibility(View.VISIBLE);
+		passage.setClickable(true);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.VISIBLE);
 		display.setText("Moves Left: " + state.getMovesLeft());
@@ -295,6 +301,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		Button right = myActivity.findViewById(R.id.buttonRight);
 		right.setVisibility(View.INVISIBLE);
 		right.setClickable(false);
+		Button passage = myActivity.findViewById(R.id.passagewayButton);
+		passage.setVisibility(View.INVISIBLE);
+		passage.setClickable(false);
 		Button display = myActivity.findViewById(R.id.displayMovesButton);
 		display.setVisibility(View.INVISIBLE);
 		Button cancel = myActivity.findViewById(R.id.cancelMoveButton);
@@ -469,6 +478,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		leftArrow.setOnClickListener(this);
 		ToggleButton cancelButton = myActivity.findViewById(R.id.cancelMoveButton);
 		cancelButton.setOnClickListener(this);
+		ToggleButton passageButton = myActivity.findViewById(R.id.passagewayButton);
+		passageButton.setOnClickListener(this);
 
 		ourDrawingImageView = myActivity.findViewById(R.id.boardView);
 		ourDrawingBitmap = Bitmap.createBitmap(750, 750, Bitmap.Config.ARGB_8888);
