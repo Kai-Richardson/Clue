@@ -262,7 +262,7 @@ public class ClueLocalGame extends LocalGame
             int playerId = getPlayerIdx(eta.getPlayer());
             if(!(canMove(playerId)))
             {
-                Log.d("endturn", "break 1");
+                Log.i("ILLEGAL", "Player " + playerId + " attempted to end turn when it was not their turrn.");
                 return false;
             }
             else

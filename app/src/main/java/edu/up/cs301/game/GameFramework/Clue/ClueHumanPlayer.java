@@ -51,6 +51,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	public ClueHumanPlayer(String name) {
 		super(name);
 
+		crossOutMyCards();
+
 	}
 
 	/**
@@ -141,10 +143,18 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		}
 	}
 
-	//Puts a crossout overlay on top of a button
+	//Puts a crossout overlay on top of a button - for disproven
 	private void crossoutButton(String name) {
 		Button ourButton = stringToButton(name);
+		assert ourButton != null;
 		ourButton.setForeground(ContextCompat.getDrawable(myActivity, R.drawable.cancel_trans));
+	}
+
+	//Puts a crossout overlay on top of a button - for your cards
+	private void crossoutButtonGreen(String name) {
+		Button ourButton = stringToButton(name);
+		assert ourButton != null;
+		ourButton.setForeground(ContextCompat.getDrawable(myActivity, R.drawable.cancel_trans_green));
 	}
 
 	/**
@@ -336,6 +346,13 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 				break;
 		}
 
+	}
+
+	//Crosses out cards you already have
+	private void crossOutMyCards() {
+		for (Card c : state.getHand(playerNum)) {
+			crossoutButtonGreen(c.getName());
+		}
 	}
 
 
