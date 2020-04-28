@@ -1,5 +1,7 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import edu.up.cs301.game.R;
+
 public class Card
 {
     private String name;
@@ -20,4 +22,5 @@ public class Card
     {
         return name;
     }
+
 }

@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ToggleButton;
 
+import java.util.Objects;
+
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.R;
 
@@ -19,7 +21,7 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 	private final String TAG = "edu.up.cs301.game.GameFramework.Clue.SuggestView";
 
 	private Activity myActivity;
-	private GamePlayer p1;
+	private ClueHumanPlayer myPlayer;
 
 	private Card chosenCharacter = null;
 	private Card chosenWeapon = null;
@@ -107,9 +109,10 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 				break;
 
 			case R.id.confirmButtonS:
-				if(chosenCharacter != null && chosenWeapon != null && chosenRoom != null) {
-					new ClueSuggestAction(p1, chosenCharacter.getName(), chosenWeapon.getName(), chosenRoom.getName());
-				}
+				if (Objects.isNull(chosenCharacter) || Objects.isNull(chosenRoom) || Objects.isNull(chosenWeapon))
+					break;
+				ClueSuggestAction mySuggAct = new ClueSuggestAction(myPlayer, chosenCharacter.getName(), chosenWeapon.getName(), chosenRoom.getName());
+				myPlayer.sendFragAct(mySuggAct);
 				myActivity.getFragmentManager().beginTransaction().remove(this).commit();
 				break;
 
@@ -228,7 +231,11 @@ public class suggestFragment extends Fragment implements View.OnClickListener
 
 	}
 
-	public void setPlayer(GamePlayer p1) {
-		this.p1 = p1;
+	public void setPlayer(ClueHumanPlayer player) {
+		this.myPlayer = player;
+	}
+
+	public void setRoomLocation(Room roomCard) {
+		this.chosenRoom = roomCard.toCard();
 	}
 }

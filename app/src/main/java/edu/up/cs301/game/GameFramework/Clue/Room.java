@@ -36,4 +36,8 @@ public class Room {
 	public String getName() {
 		return roomName;
 	}
+
+	public Card toCard() {
+		return new Card(this.roomName, 1); //TODO: Return actual card reference, should have master list
+	}
 }
