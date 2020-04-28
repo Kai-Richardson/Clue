@@ -7,6 +7,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 
+import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 
@@ -779,6 +780,10 @@ public class ClueGameState extends GameState implements Serializable
             whoseMove = 0;
         }
     }
+
+	public Room getRoomOfPlayer(int playerNum) {
+		return getTileDataAtCoord(getPlayerX(playerNum), getPlayerY(playerNum)).getRoom();
+	}
 
     public int getMovesLeft()
     {
