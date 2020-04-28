@@ -49,9 +49,11 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	 */
 	public ClueHumanPlayer(String name) {
 		super(name);
-
+	try {
 		crossOutMyCards();
-
+	}
+	catch(Exception e) {
+	}
 	}
 
 	/**

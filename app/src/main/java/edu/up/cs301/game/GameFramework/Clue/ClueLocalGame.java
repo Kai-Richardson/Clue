@@ -15,6 +15,7 @@ import edu.up.cs301.game.GameFramework.infoMessage.GameState;
 public class ClueLocalGame extends LocalGame
 {
     private int movesLeft;
+    private boolean gameOver;
 
     private ClueGameState gameState;
 
@@ -24,12 +25,20 @@ public class ClueLocalGame extends LocalGame
         String[] str = new String[numPlayers];
         //this.gameState = new ClueGameState();
 	    this.gameState = new ClueGameState(numPlayers, str, 0);
+	    gameOver = false;
     }
 
     @Override
     protected String checkIfGameOver()
     {
-        return null; //put actual content here
+        if(!gameOver)
+        {
+            return null;
+        }
+        else
+        {
+            return "The game is over";
+        }
     }
 
     @Override
@@ -155,7 +164,7 @@ public class ClueLocalGame extends LocalGame
             if(gameState.getMovesLeft() == 0 || inRoom)
             {
                 //move to suggest or accuse
-                gameState.setGameStage(4); // FIX THIS LATER
+                gameState.setGameStage(2); // FIX THIS LATER
             }
             Log.d("Move", "Action complete");
             return true;
@@ -177,28 +186,43 @@ public class ClueLocalGame extends LocalGame
             }
             ArrayList<Card> wCards = gameState.getWinningCards();
             for (int i = 0; i < wCards.size(); i++) {
-                if (wCards.get(i).getCardType() == 0) {
-                    if (!wCards.get(i).getName().equals(aAction.getPerson())) {
+                if (wCards.get(i).getCardType() == 1) {
+                    if(aAction.getPerson() == null)
+                    {
+                        return false;
+                    }
+                    if (!wCards.get(i).getName().equalsIgnoreCase(aAction.getPerson())) {
                         correct = false;
                     }
                 }
-                if (wCards.get(i).getCardType() == 1) {
-                    if (!wCards.get(i).getName().equals(aAction.getRoom())) {
+                if (wCards.get(i).getCardType() == 0) {
+                    if(aAction.getPerson() == null)
+                    {
+                        return false;
+                    }
+                    if (!wCards.get(i).getName().equalsIgnoreCase(aAction.getRoom())) {
                         correct = false;
                     }
                 }
                 if (wCards.get(i).getCardType() == 2) {
-                    if (!wCards.get(i).getName().equals(aAction.getWeapon())) {
+                    if(aAction.getPerson() == null)
+                    {
+                        return false;
+                    }
+                    if (!wCards.get(i).getName().equalsIgnoreCase(aAction.getWeapon())) {
                         correct = false;
                     }
                 }
             }
             if(correct){
                 //make game over
+                Log.d("Accuse", "Accuse successful");
+                gameOver = true;
                 return true;
             }
             else
             {
+                Log.d("Accuse", "Accuse failed");
                 gameState.setGameStage(4);
                 return true;
             }
