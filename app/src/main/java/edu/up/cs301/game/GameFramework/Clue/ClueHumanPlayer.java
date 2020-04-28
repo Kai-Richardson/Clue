@@ -19,7 +19,6 @@ import android.widget.ToggleButton;
 
 import edu.up.cs301.game.GameFramework.GameHumanPlayer;
 import edu.up.cs301.game.GameFramework.GameMainActivity;
-import edu.up.cs301.game.GameFramework.actionMessage.EndTurnAction;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
 import edu.up.cs301.game.GameFramework.infoMessage.GameInfo;
 import edu.up.cs301.game.R;
@@ -143,14 +142,23 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		}
 	}
 
-	//Puts a crossout overlay on top of a button - for disproven
+	/**
+	 * Given a canonical name of a button, crosses it out with a red X
+	 * For disproven cards
+	 *
+	 * @param name - canonical name of button
+	 */
 	private void crossoutButton(String name) {
 		Button ourButton = stringToButton(name);
 		assert ourButton != null;
 		ourButton.setForeground(ContextCompat.getDrawable(myActivity, R.drawable.cancel_trans));
 	}
 
-	//Puts a crossout overlay on top of a button - for your cards
+	/**
+	 * Given a canonical name of a button, crosses it out with a green X
+	 * For cards in your hand
+	 * @param name - canonical name of button
+	 */
 	private void crossoutButtonGreen(String name) {
 		Button ourButton = stringToButton(name);
 		assert ourButton != null;
@@ -158,8 +166,8 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	}
 
 	/**
-	 * this method gets called when the user clicks the '+' or '-' button. It
-	 * creates a new CounterMoveAction to return to the parent activity.
+	 * This method is called when a button is clicked.
+	 * This is primarily used for the interactive notepad.
 	 *
 	 * @param button the button that was clicked
 	 */
@@ -241,7 +249,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		game.sendAction(action); // send action to the game
 	}// onClick
 
-	//Hides state buttons and shows move interface
+	/** Hides the switch state buttons and displays the move interface.
+	 *
+	 */
 	public void switchToMoveMode() {
 		receiveInfo(state);
 		//Hides State Buttons
@@ -282,7 +292,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		cancel.setClickable(true);
 	}
 
-	//Switches away from move mode, to state mode
+	/** Displays the switch state buttons and hides the move interface.
+	 *
+	 */
 	public void switchToStateMode() {
 		//Shows State Buttons
 		Button moveButton = myActivity.findViewById(R.id.moveButton);
@@ -321,9 +333,14 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		cancel.setClickable(false);
 	}
 
-
-	//Should attempt to switch state (move, sugg., accuse) by sending an action according to the type
-	//Not just by switching like this, but query the localgame if its allowed
+	/** Attempts a state change.
+	 *  Can be loading a new fragment window, or moving/canceling moving.
+	 *
+	 *  TODO: Query the localgame if this should be allowed
+	 *  TODO: Move to action-based
+	 *
+	 * @param type - String type of state
+	 */
 	private void attemptStateChange(String type) {
 
 		switch (type) {
@@ -348,7 +365,9 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	}
 
-	//Crosses out cards you already have
+	/** Method that crosses out cards that are in your hand according the GameState.
+	 *
+	 */
 	private void crossOutMyCards() {
 		for (Card c : state.getHand(playerNum)) {
 			crossoutButtonGreen(c.getName());
@@ -357,29 +376,30 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 
 	//Should attempt move by sending action according to dir
+
+	/** When given a string direction, this sends the associated MoveAction and attempts a state change.
+	 *
+	 * @param dir - string direction
+	 */
 	private void attemptMove(String dir) {
 		switch (dir) {
 			case "up":
-				ClueMoveAction moveActionUp = new ClueMoveAction(this, 0);
-				game.sendAction(moveActionUp);
+				game.sendAction(new ClueMoveAction(this, 0));
 				Log.d("move action", "up");
 				attemptStateChange("move");
 				break;
 			case "down":
-				ClueMoveAction moveAction1Down = new ClueMoveAction(this, 2);
-				game.sendAction(moveAction1Down);
+				game.sendAction(new ClueMoveAction(this, 2));
 				Log.d("move action", "down");
 				attemptStateChange("move");
 				break;
 			case "left":
-				ClueMoveAction moveAction2 = new ClueMoveAction(this, 3);
-				game.sendAction(moveAction2);
+				game.sendAction(new ClueMoveAction(this, 3));
 				Log.d("move action", "left");
 				attemptStateChange("move");
 				break;
 			case "right":
-				ClueMoveAction moveAction3 = new ClueMoveAction(this, 1);
-				game.sendAction(moveAction3);
+				game.sendAction(new ClueMoveAction(this, 1));
 				Log.d("move action", "right");
 				attemptStateChange("move");
 				break;
@@ -509,7 +529,11 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		}
 	}
 
-	//Converts Grid values to raw x,y coordinates to draw on
+	/** Converts Grid values to raw x,y coordinates to draw on
+	 *
+	 * @param x Integer grid value
+	 * @return Integer coordinate value - for use by Canvas
+	 */
 	private int Grid2Coord(int x) {
 		if (x < 0 || 24 < x) return 328; //Middle to make it clear it was bad
 		return 15 + (x * 30);
@@ -517,7 +541,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 
 	/**
 	 * Loads a 'Fragment' - aka a popup View
-	 * <p>
+	 *
 	 * This fragment container will be part of the main view.
 	 */
 	public void loadFragment(Fragment frag, String tag) {
