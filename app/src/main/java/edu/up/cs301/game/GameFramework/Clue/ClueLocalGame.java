@@ -107,6 +107,7 @@ public class ClueLocalGame extends LocalGame
             if(!(canMove(playerId)))
             {
                 Log.d("Move", "move error 1");
+
                 return false;
             }
             if(gameState.getMovesLeft() <= 0 || gameState.getGameStage() != 1)
@@ -114,6 +115,7 @@ public class ClueLocalGame extends LocalGame
                 Log.d("Move", "move error 2");
                 Log.d("Move", "moves left " + gameState.getMovesLeft());
                 Log.d("Move", "gameStage: " + gameState.getGameStage());
+                Toast.makeText(GameMainActivity.getContext(),"You already did an action for this turn / out of moves", Toast.LENGTH_SHORT).show();
                 return false;
             }
             Log.d("LocalGame", "Move part 2");
@@ -188,6 +190,7 @@ public class ClueLocalGame extends LocalGame
             if(gameState.getGameStage() != 2)
             {
                 Log.d("accuse", "break 2");
+                Toast.makeText(GameMainActivity.getContext(), "You cannot accuse now", Toast.LENGTH_LONG).show();
                 return false;
             }
 
@@ -246,11 +249,13 @@ public class ClueLocalGame extends LocalGame
                 Log.d("endturn", "break 1");
                 return false;
             }
-            if(gameState.getGameStage() != 3)
+            if(gameState.getGameStage() != 2)
             {
                 Log.d("disprove", "break 2");
+                Toast.makeText(GameMainActivity.getContext(), "You cannot suggest now", Toast.LENGTH_LONG).show();
                 return false;
             }
+
             ArrayList<String> chosenCards = new ArrayList<String>();
             ArrayList<String> seen = new ArrayList<String>();
             chosenCards.add(csa.getPerson());
@@ -261,6 +266,10 @@ public class ClueLocalGame extends LocalGame
             {
                 for(int j = 0; j < 3; j++)
                 {
+                    if(chosenCards.get(i) == null){
+                        Toast.makeText(GameMainActivity.getContext(),"YOU MUST BE IN A ROOM TO MAKE A SUGGESTION", Toast.LENGTH_LONG).show();
+                        return false;
+                    }
                     if(!chosenCards.get(i).equalsIgnoreCase(gameState.getWinningCards().get(j).getName()))
                     {
                         seen.add(chosenCards.get(i));
@@ -277,6 +286,7 @@ public class ClueLocalGame extends LocalGame
                 Random r = new Random();
                 int chosenCard = r.nextInt(count);
                 gameState.setDisproveCard(seen.get(chosenCard));
+                Toast.makeText(GameMainActivity.getContext(),seen.get(chosenCard), Toast.LENGTH_SHORT).show();
             }
             else
             {

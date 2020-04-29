@@ -1,6 +1,7 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
 import android.service.quicksettings.Tile;
+import android.util.Log;
 import android.widget.ProgressBar;
 
 import java.io.Serializable;
@@ -728,6 +729,9 @@ public class ClueGameState extends GameState implements Serializable
         sugRoom = null;
         sugWeapon = null;
         disproveCard = null;
+        Log.d("winning cards", winningCards.get(0).getName());
+        Log.d("winning cards", winningCards.get(1).getName());
+        Log.d("winning cards", winningCards.get(2).getName());
     }
 
     public ClueGameState(ClueGameState or) {
