@@ -29,7 +29,7 @@ public class ClueGameState extends GameState implements Serializable
     private ArrayList<Card> winningCards = new ArrayList<Card>();
 
     private int suggestTurn;
-
+    private boolean gameOver;
     private int handSize;
     private Card[][] playerHands;
 
@@ -65,6 +65,8 @@ public class ClueGameState extends GameState implements Serializable
         deck.add(new Card("green", 1));
         deck.add(new Card("white", 1));
         deck.add(new Card("peacock", 1));
+
+        gameOver = false;
 
         Collections.shuffle(deck);
         for(Card card: deck)
@@ -846,6 +848,13 @@ public class ClueGameState extends GameState implements Serializable
     public void setSugWeapon(String i)
     {
         sugWeapon = i;
+    }
+    public void setGameOver(boolean gOver){
+        gameOver = gOver;
+    }
+    public boolean getGameOver()
+    {
+        return gameOver;
     }
 
     public String getSugWeapon()

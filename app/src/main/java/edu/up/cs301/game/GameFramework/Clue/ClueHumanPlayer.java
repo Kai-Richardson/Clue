@@ -53,6 +53,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 		crossOutMyCards();
 	}
 	catch(Exception e) {
+		Log.d("exception", "exception");
 	}
 	}
 
@@ -164,6 +165,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	private void crossoutButtonGreen(String name) {
 		Button ourButton = stringToButton(name);
 		assert ourButton != null;
+		ourButton.setEnabled(false);
 		ourButton.setForeground(ContextCompat.getDrawable(myActivity, R.drawable.cancel_trans_green));
 	}
 
@@ -383,6 +385,7 @@ public class ClueHumanPlayer extends GameHumanPlayer implements OnClickListener 
 	private void crossOutMyCards() {
 		for (Card c : state.getHand(playerNum)) {
 			crossoutButtonGreen(c.getName());
+			Log.d("Card", c.getName());
 		}
 	}
 

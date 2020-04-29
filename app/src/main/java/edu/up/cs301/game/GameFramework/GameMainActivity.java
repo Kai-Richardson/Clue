@@ -26,6 +26,8 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.TabHost.TabSpec;
+
+import edu.up.cs301.game.GameFramework.Clue.ClueLocalGame;
 import edu.up.cs301.game.GameFramework.gameConfiguration.GameConfig;
 import edu.up.cs301.game.GameFramework.gameConfiguration.GamePlayerType;
 import edu.up.cs301.game.GameFramework.utilities.IPCoder;
@@ -57,6 +59,8 @@ public abstract class GameMainActivity extends Activity implements
     // object that knows the rules of the game. This variable is initialized in
     // launchGame.
     private Game game = null;
+
+    private static Context context;
 
     // an array containing references to all the players that are playing the game
     private GamePlayer[] players = null;
@@ -151,7 +155,7 @@ public abstract class GameMainActivity extends Activity implements
     @Override
     public final void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        GameMainActivity.context = getApplicationContext();
         //Set Context for Toast Logging
         Logger.setContext(getApplicationContext());
 
@@ -199,6 +203,9 @@ public abstract class GameMainActivity extends Activity implements
             Logger.setDebugValue(false);
         }
     }// onCreate
+    public static Context getContext(){
+        return GameMainActivity.context;
+    }
 
     /**
      * Returns the name of the configuration save-file.

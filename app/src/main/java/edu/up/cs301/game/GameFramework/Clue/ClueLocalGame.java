@@ -1,19 +1,23 @@
 package edu.up.cs301.game.GameFramework.Clue;
 
+import android.content.Context;
 import android.support.annotation.IdRes;
 import android.util.Log;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
 
+import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
 import edu.up.cs301.game.GameFramework.actionMessage.GameAction;
-import edu.up.cs301.game.GameFramework.infoMessage.GameState;
+
 
 public class ClueLocalGame extends LocalGame
 {
+    Context context;
     private int movesLeft;
     private boolean gameOver;
 
@@ -184,6 +188,7 @@ public class ClueLocalGame extends LocalGame
                 Log.d("accuse", "break 2");
                 return false;
             }
+
             ArrayList<Card> wCards = gameState.getWinningCards();
             for (int i = 0; i < wCards.size(); i++) {
                 if (wCards.get(i).getCardType() == 1) {
@@ -216,12 +221,14 @@ public class ClueLocalGame extends LocalGame
             }
             if(correct){
                 //make game over
+                Toast.makeText(GameMainActivity.getContext(), "YOU'RE RIGHT, YOU WIN!!", Toast.LENGTH_LONG).show();
                 Log.d("Accuse", "Accuse successful");
                 gameOver = true;
                 return true;
             }
             else
             {
+                Toast.makeText(GameMainActivity.getContext(), "ACCUSE FAILED, YOU LOSE!!", Toast.LENGTH_LONG).show();
                 Log.d("Accuse", "Accuse failed");
                 gameState.setGameStage(4);
                 return true;
@@ -286,7 +293,7 @@ public class ClueLocalGame extends LocalGame
             int playerId = getPlayerIdx(eta.getPlayer());
             if(!(canMove(playerId)))
             {
-                Log.i("ILLEGAL", "Player " + playerId + " attempted to end turn when it was not their turrn.");
+                Log.i("ILLEGAL", "Player " + playerId + " attempted to end turn when it was not their turn.");
                 return false;
             }
             else
@@ -329,6 +336,8 @@ public class ClueLocalGame extends LocalGame
     {
         return false;
     }
-    
 
+    public static void showToastMethod(Context context) {
+        Toast.makeText(context, "mymessage ", Toast.LENGTH_SHORT).show();
+    }
 }
