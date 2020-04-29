@@ -266,9 +266,15 @@ public class ClueLocalGame extends LocalGame
                     }
                 }
             }
-            Random r = new Random();
-            int chosenCard = r.nextInt(count);
-            gameState.setDisproveCard(seen.get(chosenCard));
+            if(count > 0) {
+                Random r = new Random();
+                int chosenCard = r.nextInt(count);
+                gameState.setDisproveCard(seen.get(chosenCard));
+            }
+            else
+            {
+                gameState.setDisproveCard(null);
+            }
             gameState.setGameStage(4);
             return true;
         }
