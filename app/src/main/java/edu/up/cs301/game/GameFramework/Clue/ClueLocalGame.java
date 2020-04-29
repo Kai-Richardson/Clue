@@ -4,8 +4,10 @@ import android.support.annotation.IdRes;
 import android.util.Log;
 import android.widget.ProgressBar;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import edu.up.cs301.game.GameFramework.GamePlayer;
 import edu.up.cs301.game.GameFramework.LocalGame;
@@ -242,10 +244,32 @@ public class ClueLocalGame extends LocalGame
                 Log.d("disprove", "break 2");
                 return false;
             }
-            gameState.setSugPerson(csa.getPerson());
-            gameState.setSugRoom(csa.getRoom());
-            gameState.setSugWeapon(csa.getWeapon());
-            gameState.setGameStage(3);
+            ArrayList<String> chosenCards = new ArrayList<String>();
+            ArrayList<String> seen = new ArrayList<String>();
+            chosenCards.add(csa.getPerson());
+            chosenCards.add(csa.getRoom());
+            chosenCards.add(csa.getWeapon());
+            int count = 0;
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    if(!chosenCards.get(i).equalsIgnoreCase(gameState.getWinningCards().get(j).getName()))
+                    {
+                        seen.add(chosenCards.get(i));
+                        count++;
+                    }
+                    else if(!chosenCards.get(i).equalsIgnoreCase(gameState.getHand(playerId)[j].getName()))
+                    {
+                        seen.add(chosenCards.get(i));
+                        count++;
+                    }
+                }
+            }
+            Random r = new Random();
+            int chosenCard = r.nextInt(count);
+            gameState.setDisproveCard(seen.get(chosenCard));
+            gameState.setGameStage(4);
             return true;
         }
 
@@ -286,7 +310,7 @@ public class ClueLocalGame extends LocalGame
             int playerId = getPlayerIdx(eta.getPlayer());
             if(!(canMove(playerId)))
             {
-                Log.i("ILLEGAL", "Player " + playerId + " attempted to end turn when it was not their turrn.");
+                Log.i("ILLEGAL", "Player " + playerId + " attempted to end turn when it was not their turn.");
                 return false;
             }
             else
