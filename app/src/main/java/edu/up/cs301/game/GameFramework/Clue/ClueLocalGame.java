@@ -6,8 +6,10 @@ import android.util.Log;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 import edu.up.cs301.game.GameFramework.GameMainActivity;
 import edu.up.cs301.game.GameFramework.GamePlayer;
@@ -249,10 +251,38 @@ public class ClueLocalGame extends LocalGame
                 Log.d("disprove", "break 2");
                 return false;
             }
-            gameState.setSugPerson(csa.getPerson());
-            gameState.setSugRoom(csa.getRoom());
-            gameState.setSugWeapon(csa.getWeapon());
-            gameState.setGameStage(3);
+            ArrayList<String> chosenCards = new ArrayList<String>();
+            ArrayList<String> seen = new ArrayList<String>();
+            chosenCards.add(csa.getPerson());
+            chosenCards.add(csa.getRoom());
+            chosenCards.add(csa.getWeapon());
+            int count = 0;
+            for(int i = 0; i < 3; i++)
+            {
+                for(int j = 0; j < 3; j++)
+                {
+                    if(!chosenCards.get(i).equalsIgnoreCase(gameState.getWinningCards().get(j).getName()))
+                    {
+                        seen.add(chosenCards.get(i));
+                        count++;
+                    }
+                    else if(!chosenCards.get(i).equalsIgnoreCase(gameState.getHand(playerId)[j].getName()))
+                    {
+                        seen.add(chosenCards.get(i));
+                        count++;
+                    }
+                }
+            }
+            if(count > 0) {
+                Random r = new Random();
+                int chosenCard = r.nextInt(count);
+                gameState.setDisproveCard(seen.get(chosenCard));
+            }
+            else
+            {
+                gameState.setDisproveCard(null);
+            }
+            gameState.setGameStage(4);
             return true;
         }
 
